@@ -1,0 +1,1 @@
+coffeeshop = require "./module.coffee"

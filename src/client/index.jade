@@ -1,0 +1,21 @@
+!!!
+html
+	head
+		title coffeeshop
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="page.css", media="screen")
+		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.js')
+		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-animate.js')
+		script(src='http://underscorejs.org/underscore-min.js')
+		script(src='/vendor/superscore/lib/superscore.min.js')
+		script(src='/bower/q/q.js')
+		script(src='/vendor/jefri/lib/jefri.min.js')
+		script(src='/vendor/store/lib/jefri-stores.min.js')
+		script(src='bundle.js')
+	body(ng:app='coffeeshop')
+		.container
+			.jumbotron
+				include products/list/template
+			footer
+				:markdown
+					coffeeshop by [Jonathan Porta](http://jonathanporta.com)
