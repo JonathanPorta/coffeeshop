@@ -1,4 +1,4 @@
-jshop
+coffeeShop
 =====
 
-jshop - an open source TDD ecommerce shop using node, angular and JEFRi.
+coffeeShop - an open source TDD ecommerce shop using node, angular, JEFRi and, of course, coffescript.
