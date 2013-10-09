@@ -39,7 +39,8 @@
     "jefri": "1.1.1-RC3",
     "jefri-stores": "1.1.1-RC3",
     "nconf": "~0.6.7",
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "marked": "~0.2.9"
   },
   "scripts": {
     "test": "grunt test",
