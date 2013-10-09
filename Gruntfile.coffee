@@ -40,17 +40,16 @@ module.exports = (grunt) ->
 	grunt.initConfig grunt.Config
 	grunt.loadNpmTasks npmTask for npmTask in grunt.NpmTasks
 
-	grunt.registerTask 'test', [
-		'mochaTest:server'
-		'karma:unit'
-		'features'
-	]
-
 	grunt.registerTask 'base', [
 		'build'
 		'copy:context'
 		'mochaTest:server'
 		'karma:unit'
+	]
+
+	grunt.registerTask 'test', [
+		'base'
+		'features'
 	]
 
 	grunt.registerTask 'compress', [
@@ -59,7 +58,6 @@ module.exports = (grunt) ->
 	]
 
 	grunt.registerTask 'default', [
-		'build'
 		'test'
 		'compress'
 	]
