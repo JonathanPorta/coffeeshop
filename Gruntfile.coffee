@@ -41,6 +41,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks npmTask for npmTask in grunt.NpmTasks
 
 	grunt.registerTask 'test', [
+		'lint'
 		'mochaTest:server'
 		'karma:unit'
 		'features'

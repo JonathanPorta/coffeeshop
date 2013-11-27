@@ -8,6 +8,7 @@ angular.module('coffeeshop').service "storage", ($location, $q, $rootScope)->
 	storage =
 		get: ->
 		save: ->
+		build: ->
 		runtime: runtime
 		ready: loading.promise
 
@@ -24,7 +25,7 @@ angular.module('coffeeshop').service "storage", ($location, $q, $rootScope)->
 			else
 				throw new Exception 'Product not found.'
 		.catch (e)->
-			products = [runtime.build('Product', {'name':'Product Name'})]
+			products = [runtime.build('Product', {'name':'Product Name'}), runtime.build('Product', {'name':'Product Nameasd'}), runtime.build('Product', {'name':'Product Nadsame'})]
 		.finally ->
 			storage.get = -> products
 			storage.save = ->
@@ -32,6 +33,8 @@ angular.module('coffeeshop').service "storage", ($location, $q, $rootScope)->
 				t.add product for product in products
 				s = new window.JEFRi.Stores.PostStore({remote: base, runtime})
 				s.execute 'persist', t
+			storage.build = (type, initial = {})->
+				runtime.build(type, initial)
 
 			loading.resolve products # Why doesn't resolving $q trigger a digest?
 			$rootScope.$digest()

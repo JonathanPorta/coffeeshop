@@ -1,0 +1,17 @@
+{"attributes":{},"entities":{
+	"Product": {
+		"key": "product_id",
+		"properties": {
+			"product_id": {
+				"type": "string"
+			},
+			"name": {
+				"type": "string"
+			},
+			"description": {
+				"type": "string"
+			}
+		},
+		"relationships": {};
+	}
+}}

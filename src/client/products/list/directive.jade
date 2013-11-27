@@ -1,0 +1,5 @@
+.productListDirective
+	input(type='text', ng-model='search', placeholder='Search')
+	ul(ng:cloak)
+		li.product(ng:repeat='product in products | filter:{name:search}')
+			{{product.name}}

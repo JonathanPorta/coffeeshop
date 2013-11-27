@@ -19,4 +19,4 @@ angular.module('coffeeshop').controller "productList", ($scope, storage)->
 		console.log "error", e
 
 	storage.ready.finally (e)->
-		console.log "finally", e
+		#console.log "finally", e

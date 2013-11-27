@@ -13,12 +13,10 @@ html
 		script(src='/vendor/jefri/lib/jefri.min.js')
 		script(src='/vendor/store/lib/jefri-stores.min.js')
 		script(src='bundle.js')
+		script(src='templates.js')
 	body(ng:app='coffeeshop')
 		.container
-			.jumbotron
-				include products/list/template
+			.jumbotron(ng-view)
 			footer
 				:markdown
 					coffeeshop by [Jonathan Porta](http://jonathanporta.com)
-		div(ng-view)
-			sdfsdfsd

@@ -12,6 +12,8 @@ nconf.argv()
 JEFRi = require "jefri"
 Stores = require "jefri-stores"
 
+importer = require './importer'
+
 runtime = new JEFRi.Runtime ""
 store = new JEFRi.Stores.FileStore runtime: runtime
 
@@ -50,6 +52,17 @@ app =
 		.get '/bundle.js', (req, res) ->
 			res.set "content-type", "text/javascript"
 			res.sendfile path.join root, "build", "bundle.js"
+
+		.get '/templates.js', (req, res) ->
+			res.set "content-type", "text/javascript"
+			res.sendfile path.join root, "build", "templates.js"
+
+		.get '/test.json', (req, res) ->
+			res.set "content-type", "text/javascript"
+			res.sendfile path.join root, "build", "test.json"
+
+		.get '/import', (req, res) ->
+			importer.import "http://localhost:3000/test.json"
 
 		.get '/', (req, res) ->
 			res.sendfile path.join root, "build", "index.html"

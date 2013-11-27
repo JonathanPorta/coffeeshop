@@ -1,4 +1,17 @@
 module.exports = (grunt)->
+
+#Formats template names to be sexier.
+	jadeTemplateId = (filepath)->
+		filepath
+		.replace(
+			/^src\/client\/(.*)\/template.jade$/
+			'$1'
+		)
+		.replace(
+			/^src\/client\/(.*)\/directive.jade$/
+			'$1/widget'
+		)
+
 	grunt.Config =
 		browserify:
 			dev:
@@ -13,6 +26,17 @@ module.exports = (grunt)->
 			index:
 				files:
 					"build/index.html": "src/client/index.jade"
+
+		ngjade:
+			templates:
+				options:
+					moduleName:"coffeeshop"
+					processName:jadeTemplateId
+				files:[{
+					expand: false
+					src: ["src/client/products/**/template.jade", "src/client/products/**/directive.jade"]
+					dest: "build/templates.js"
+				}]
 
 		less:
 			page:
@@ -33,6 +57,7 @@ module.exports = (grunt)->
 						"src/client/bundle.js": "coverage"
 						"src/**/*.coffee": "coffee"
 						"src/**/**/*.coffee": "coffee"
+						"src/**/**/**/*.coffee": "coffee"
 					reporters: [
 						'coverage'
 						'dots'
@@ -71,10 +96,12 @@ module.exports = (grunt)->
 		'grunt-contrib-uglify'
 		'grunt-contrib-cssmin'
 		'grunt-contrib-watch'
+		'grunt-ngjade'
 	]
 
 	grunt.registerTask "build", [
 		"browserify:dev"
 		"jade:index"
 		"less:page"
+		"ngjade:templates"
 	]

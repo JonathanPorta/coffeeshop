@@ -32,9 +32,21 @@ module.exports = (grunt) ->
 			options:
 				steps: 'src/features/behavior/steps'
 
+		jsonlint:
+			context:
+				src: ['build/context.json']
+			inventory:
+				src: ['build/test.json']
+
 	grunt.NpmTasks = [
 		'grunt-cucumber'
 		'grunt-shell-spawn'
+		'grunt-jsonlint'
+	]
+
+	grunt.registerTask "lint", [
+		"jsonlint:context"
+		"jsonlint:inventory"
 	]
 
 	grunt.registerTask "features", [

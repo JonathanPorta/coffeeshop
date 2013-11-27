@@ -1,0 +1,20 @@
+.productEditDirective
+	header
+		h1.products-edit-header(ng-hide="product.name") New Product
+		h1.products-edit-header(ng-show="product.name") {{product.name}}
+	section.row
+		form(role="form")
+			.form-group
+				label.sr-only(for="products-edit-name")
+				input.form-control(id="products-edit-name", ng-model="product.name", placeholder="Enter Product Name")
+			.form-group
+				label.sr-only(for="products-edit-sku")
+				input.form-control.horizontal(id="products-edit-sku", ng-model="product.sku", placeholder="SKU", style="width:30%")
+				label.sr-only(for="products-edit-partno")
+				input.form-control.horizontal(id="products-edit-partno", ng-model="product.partno", placeholder="Part No.", style="width:30%")
+				label.sr-only(for="products-edit-manufacturer")
+				input.form-control.horizontal(id="products-edit-manufacturer", ng-model="product.manufacturer", placeholder="Manufacturer", style="width:30%")
+			.form-group
+				label.sr-only(for="products-edit-description")
+				textarea.form-control(id="products-edit-description", ng-model="product.description", placeholder="Description")
+	footer
