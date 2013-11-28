@@ -1,0 +1,39 @@
+angular.module('coffeeshop').controller "productList", ($scope, storage)->
+	$scope.products = []
+
+	watchExp = (entity)->
+		lastModified = 0
+		entity.on 'modified', ->
+			lastModified = new Date / 1e3
+		-> lastModified
+
+	save = (newV, oldV) ->
+		storage.save()
+	storage.ready.then (products)->
+		console.log "then", products
+		$scope.products = products
+		#$scope.$watch watchExp(list), save, true
+		#$scope.$watch "list._status() != 'PERSISTED'", save, true
+
+	storage.ready.catch (e)->
+		console.log "error", e
+
+	storage.ready.finally (e)->
+		#console.log "finally", e
+
+angular.module('coffeeshop').directive "productList", ()->
+	{
+		restrict: "A"
+		scope: {
+			products: "="
+		}
+		template: "<div><input type='text' ng-model='search' placeholder='Search'><ol ng:cloak><li class='product' ng:repeat='product in products | filter:{name:search}'>{{product.name}}</li></ol></div>"
+		replace: true
+		transclude: false
+		link: (scope, element, attrs, controller)->
+#			scope.$watch "products", (update, old)->
+#				console.log "Products updated!", old, update
+
+			console.log "productList Directive Link Function!"
+			console.log( scope, element, attrs, controller )
+	}
