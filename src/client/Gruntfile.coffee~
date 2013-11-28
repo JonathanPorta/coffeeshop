@@ -45,7 +45,7 @@ module.exports = (grunt)->
 						"bower_components/bootstrap/less"
 					]
 				files:
-					"build/page.css":["src/client/page.less", "src/client/**/**/directive.less"]
+					"build/page.css":["src/client/page.less"]
 
 		karma:
 			unit:
@@ -82,9 +82,9 @@ module.exports = (grunt)->
 		watch:
 			build:
 				files: [
-					'src/client/**/*jade'
-					'src/client/**/*coffee'
-					'src/client/**/*less'
+					'src/client/**/**/*jade'
+					'src/client/**/**/*coffee'
+					'src/client/**/**/*less'
 				]
 				tasks: ['build']
 

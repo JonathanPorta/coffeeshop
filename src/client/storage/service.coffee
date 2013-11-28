@@ -11,6 +11,20 @@ angular.module('coffeeshop').service "storage", ($location, $q, $rootScope)->
 		build: ->
 		runtime: runtime
 		ready: loading.promise
+		samples: [
+			{'status':'active', 'name':'Helicopter', 'description':'', 'sku':'', 'partno':''}
+			{'status':'active', 'name':'Racecar', 'description':'', 'sku':'', 'partno':''}
+			{'status':'active', 'name':'Quadcopter', 'description':'', 'sku':'', 'partno':''}
+			{'status':'pending', 'name':'Race Track', 'description':'', 'sku':'', 'partno':''}
+			{'status':'active', 'name':'Train Track', 'description':'', 'sku':'', 'partno':''}
+			{'status':'hidden', 'name':'Train Engine', 'description':'', 'sku':'', 'partno':''}
+			{'status':'active', 'name':'Beginner Airplane', 'description':'', 'sku':'', 'partno':''}
+			{'status':'pending', 'name':'Expensive Radio', 'description':'', 'sku':'', 'partno':''}
+			{'status':'hidden', 'name':'Cheap Radio', 'description':'', 'sku':'', 'partno':''}
+			{'status':'active', 'name':'Small Propellor', 'description':'', 'sku':'', 'partno':''}
+			{'status':'hidden', 'name':'Medium Propellor', 'description':'', 'sku':'', 'partno':''}
+			{'status':'active', 'name':'Large Propellor', 'description':'', 'sku':'', 'partno':''}
+		]
 
 	runtime.ready.then ->
 		t = new window.JEFRi.Transaction()
@@ -25,7 +39,7 @@ angular.module('coffeeshop').service "storage", ($location, $q, $rootScope)->
 			else
 				throw new Exception 'Product not found.'
 		.catch (e)->
-			products = [runtime.build('Product', {'name':'Product Name'}), runtime.build('Product', {'name':'Product Nameasd'}), runtime.build('Product', {'name':'Product Nadsame'})]
+			products = (runtime.build "Product", product for product in storage.samples)
 		.finally ->
 			storage.get = -> products
 			storage.save = ->

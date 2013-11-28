@@ -5,10 +5,19 @@
 			"product_id": {
 				"type": "string"
 			},
+			"status": {
+				"type": "string"
+			},
 			"name": {
 				"type": "string"
 			},
 			"description": {
+				"type": "string"
+			},
+			"sku": {
+				"type": "string"
+			},
+			"partno": {
 				"type": "string"
 			}
 		},

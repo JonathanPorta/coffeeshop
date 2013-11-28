@@ -82,9 +82,10 @@ module.exports = (grunt)->
 		watch:
 			build:
 				files: [
-					'src/client/**/*jade'
+					'src/client/**/**/*jade'
+					'src/client/**/**/*coffee'
 					'src/client/**/*coffee'
-					'src/client/**/*less'
+					'src/client/**/**/*less'
 				]
 				tasks: ['build']
 

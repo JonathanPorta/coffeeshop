@@ -1,5 +1,13 @@
 .productListDirective
-	input(type='text', ng-model='search', placeholder='Search')
-	ul(ng:cloak)
-		li.product(ng:repeat='product in products | filter:{name:search}')
-			{{product.name}}
+	section.row
+		form(role="form")
+			.form-group
+				label.sr-only(for="products-list-search")
+				input.form-control(type='search', id="products-list-search", ng-model='search', placeholder='Search Products')
+				.btn-group.btn-group-justified
+					a.btn.btn-default(ng-click="type = 'active'") Active
+					a.btn.btn-default(ng-click="type = 'pending'") Pending
+					a.btn.btn-default(ng-click="type = 'hidden'") Hidden
+					a.btn.btn-default(ng-click="type = ''") Alls
+				.list-group
+						a.product.list-group-item(ng:repeat="product in products | filter:{name:search, status:type}", ng-click="makeSelection(product)") {{product.name}}

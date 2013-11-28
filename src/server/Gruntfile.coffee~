@@ -34,9 +34,9 @@ module.exports = (grunt) ->
 
 		jsonlint:
 			context:
-				src: ['build/context.json']
+				src: ['src/context.json']
 			inventory:
-				src: ['build/inventory.json']
+				src: ['build/test.json']
 
 	grunt.NpmTasks = [
 		'grunt-cucumber'

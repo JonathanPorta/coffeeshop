@@ -18,10 +18,11 @@ module.exports = (grunt) ->
 		watch:
 			base:
 				files:[
-					'src/client/**/*jade'
-					'src/client/**/*coffee'
-					'src/client/**/*less'
+					'src/client/**/**/*jade'
+					'src/client/**/**/*coffee'
+					'src/client/**/**/*less'
 					'src/server/**/*coffee'
+					'src/context.json'
 				]
 				tasks: ['base']
 			all:
@@ -29,9 +30,9 @@ module.exports = (grunt) ->
 					'src/features/**/*coffee'
 					'src/features/**/*feature'
 					'src/server/**/*coffee'
-					'src/client/**/*jade'
-					'src/client/**/*coffee'
-					'src/client/**/*less'
+					'src/client/**/**/*jade'
+					'src/client/**/**/*coffee'
+					'src/client/**/**/*less'
 				]
 				tasks:['default']
 
@@ -48,6 +49,7 @@ module.exports = (grunt) ->
 	]
 
 	grunt.registerTask 'base', [
+		'jsonlint:context'
 		'build'
 		'copy:context'
 		'mochaTest:server'

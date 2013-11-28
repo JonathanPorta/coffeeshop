@@ -34,7 +34,7 @@ module.exports = (grunt) ->
 
 		jsonlint:
 			context:
-				src: ['build/context.json']
+				src: ['src/context.json']
 			inventory:
 				src: ['build/test.json']
 
@@ -46,7 +46,7 @@ module.exports = (grunt) ->
 
 	grunt.registerTask "lint", [
 		"jsonlint:context"
-		"jsonlint:inventory"
+#		"jsonlint:inventory"
 	]
 
 	grunt.registerTask "features", [
