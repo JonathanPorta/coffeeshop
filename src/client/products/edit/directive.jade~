@@ -9,11 +9,11 @@
 				input.form-control(id="products-edit-name", ng-model="product.name", placeholder="Enter Product Name")
 			.form-group
 				label.sr-only(for="products-edit-sku")
-				input.form-control.horizontal(id="products-edit-sku", ng-model="product.sku", placeholder="SKU", style="width:30%")
+				input.form-control.horizontal(id="products-edit-sku", ng-model="product.sku", placeholder="SKU", style="width:20%")
 				label.sr-only(for="products-edit-partno")
-				input.form-control.horizontal(id="products-edit-partno", ng-model="product.partno", placeholder="Part No.", style="width:30%")
+				input.form-control.horizontal(id="products-edit-partno", ng-model="product.partno", placeholder="Part No.", style="width:20%")
 				label.sr-only(for="products-edit-manufacturer")
-				input.form-control.horizontal(id="products-edit-manufacturer", ng-model="product.manufacturer", placeholder="Manufacturer", style="width:30%")
+				input.form-control.horizontal(id="products-edit-manufacturer", ng-model="product.manufacturer", placeholder="Manufacturer", style="width:60%")
 			.form-group
 				label.sr-only(for="products-edit-description")
 				textarea.form-control(id="products-edit-description", ng-model="product.description", placeholder="Description")

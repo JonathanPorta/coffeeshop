@@ -1,3 +1,5 @@
 @import "bootstrap.less";
 
 @import "./products/list/style.less";
+@import "./products/detail/style.less";
+@import "./products/edit/directive.less";

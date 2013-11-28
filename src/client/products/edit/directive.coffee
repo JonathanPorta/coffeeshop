@@ -10,7 +10,7 @@ angular.module('coffeeshop').directive "productEdit", ()->
 		transclude: false
 		link: (scope, element, attrs, controller)->
 			console.log "productEdit Directive Link Function!"
-			console.log( scope, element, attrs, controller )
+			console.log scope, element, attrs, controller
 		controller: ($scope, storage)->
 			console.log "Directive ctrl"
 			storage.ready.then (products)->
