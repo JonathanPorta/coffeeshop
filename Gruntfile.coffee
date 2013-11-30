@@ -50,8 +50,8 @@ module.exports = (grunt) ->
 
 	grunt.registerTask 'base', [
 		'jsonlint:context'
-		'build'
 		'copy:context'
+		'build'
 		'mochaTest:server'
 		'karma:unit'
 	]
