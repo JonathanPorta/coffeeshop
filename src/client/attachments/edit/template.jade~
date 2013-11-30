@@ -1,7 +1,0 @@
-div(ng:controller='productList')
-	header
-		h1 Products List
-	section.row
-		.col-md-6.col-md-offset-3
-			div(product-list products="products")
-	footer
