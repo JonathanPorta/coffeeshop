@@ -22,5 +22,23 @@
 			}
 		},
 		"relationships": {}
+	},
+	"Attachment": {
+		"key": "attachment_id",
+		"properties": {
+			"attachment_id": {
+				"type": "string"
+			},
+			"type": {
+				"type": "string"
+			},
+			"name": {
+				"type": "string"
+			},
+			"value": {
+				"type": "string"
+			}
+		},
+		"relationships": {}
 	}
 }}
