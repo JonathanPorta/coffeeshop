@@ -1,18 +1,19 @@
 {
-	"name": "coffeeshop",
-	"version": "0.0.0",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components"
-	],
-	"dependencies": {
-		"angular-mocks": "~1.0.8",
-		"angular": "~1.0.8",
-		"bootstrap": "~3.0.0"
-	},
-	"private": true,
-	"devDependencies": {
-		"bootstrap": "~3.0.0"
-	}
+  "name": "coffeeshop",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular-mocks": "~1.0.8",
+    "angular": "~1.0.8",
+    "bootstrap": "~3.0.0",
+    "angular-bootstrap": "~0.7.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "bootstrap": "~3.0.0"
+  }
 }
