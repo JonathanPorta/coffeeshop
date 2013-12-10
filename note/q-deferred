@@ -1,0 +1,16 @@
+promisor = ->
+    defer = Q.defer()
+    asyncFunction ->
+        if condition is good
+            defer.resolve()
+        else
+            defer.reject()
+    defer.promise
+
+promisee = ->
+    success = ->
+        console.log 'It worked!'
+    failure = ->
+        console.error 'It failed :('
+    promisor()
+    .then(success, failure)

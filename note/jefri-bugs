@@ -1,0 +1,8 @@
+JEFRi BUGS To Update in Main Codebase:
+jefri.min.js:find() - typo near hasOwnProperty(r.key...blah blah
+
+jefri.min.js:find() - " if (results[spec[r.key]]) {" - Needs to also check for _id like the line above it.
+
+jefri.min.js:expand() - return built array after assigning transaction.entities to built.
+
+
