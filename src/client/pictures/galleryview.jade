@@ -1,0 +1,6 @@
+.entityListGallery.panel-body
+	.row
+		.col-md-12
+			.thumbnail(ng:repeat="entity in entities", ng-class="{active: $parent.selection.indexOf($parent.entities[$index]) > -1}", ng-click="makeSelection(entity)")
+				img(ng-src='{{entity.thumbnail}}')
+				.caption(ng-hide="config.compact") {{entity.name}}

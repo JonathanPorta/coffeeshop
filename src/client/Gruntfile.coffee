@@ -19,6 +19,10 @@ module.exports = (grunt)->
 			/^src\/client\/(.*)\/listview.jade$/
 			'$1/listview'
 		)
+		.replace(
+			/^src\/client\/(.*)\/galleryview.jade$/
+			'$1/gallery'
+		)
 
 	grunt.Config =
 		browserify:
@@ -42,7 +46,7 @@ module.exports = (grunt)->
 					processName:jadeTemplateId
 				files:[{
 					expand: false
-					src: ["src/client/**/**/template.jade", "src/client/**/**/directive.jade", "src/client/**/**/modal.jade", "src/client/**/listview.jade"]
+					src: ["src/client/**/**/template.jade", "src/client/**/**/directive.jade", "src/client/**/**/modal.jade", "src/client/**/listview.jade", "src/client/**/galleryview.jade"]
 					dest: "build/templates.js"
 				}]
 

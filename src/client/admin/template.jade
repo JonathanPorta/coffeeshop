@@ -14,7 +14,7 @@
 					.col-md-3(entity-list, entities='products', on-selection-change='alert(category)', listview-template="products/listview", params='{"image":"false","title":"Related products","compact":"true"}')
 				.row
 					//-.col-md-6(picture-gallery, pictures='relatedPictures', on-create-new='onCreateNewPicture()', params='{"compact":"true","title":"Product pictures"}')
-					.col-md-6(entity-list, entities='relatedPictures', on-create-new='onCreateNewPicture()', listview-template="pictures/listview", params='{"compact":"true","title":"Product pictures"}')
+					.col-md-6(entity-list, entities='relatedPictures', on-create-new='onCreateNewPicture()', listview-template="pictures/gallery", params='{"compact":"true","title":"Product pictures"}')
 					.col-md-6(entity-list, entities='relatedAttachments', on-selection-change='onSelectAttachment(selection)', listview-template="attachments/listview", params='{"image":"false","title":"Product attachments","compact":"true"}')
 			.container(ng-hide="selectedProduct")
 				.row
