@@ -20,3 +20,4 @@ angular.module('coffeeshop').controller "productList", ($scope, storage)->
 
 	storage.ready.finally (e)->
 		#console.log "finally", e
+		storage.save()

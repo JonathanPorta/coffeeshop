@@ -11,6 +11,14 @@ module.exports = (grunt)->
 			/^src\/client\/(.*)\/directive.jade$/
 			'$1/widget'
 		)
+		.replace(
+			/^src\/client\/(.*)\/modal.jade$/
+			'$1/modal'
+		)
+		.replace(
+			/^src\/client\/(.*)\/listview.jade$/
+			'$1/listview'
+		)
 
 	grunt.Config =
 		browserify:
@@ -34,7 +42,7 @@ module.exports = (grunt)->
 					processName:jadeTemplateId
 				files:[{
 					expand: false
-					src: ["src/client/**/**/template.jade", "src/client/**/**/directive.jade"]
+					src: ["src/client/**/**/template.jade", "src/client/**/**/directive.jade", "src/client/**/**/modal.jade", "src/client/**/listview.jade"]
 					dest: "build/templates.js"
 				}]
 
@@ -86,6 +94,8 @@ module.exports = (grunt)->
 					'src/client/**/**/*coffee'
 					'src/client/**/*coffee'
 					'src/client/**/**/*less'
+					'src/client/**/*coffee'
+					'src/client/**/*jade'
 				]
 				tasks: ['build']
 

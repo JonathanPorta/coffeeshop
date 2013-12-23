@@ -1,0 +1,13 @@
+.entityListDirective
+	.panel.panel-default
+		.panel-heading(ng-show="config.title")
+			h4.panel-title {{config.title}}
+		.list-group(ng-class="{compact: config.compact}")
+			.entity-list-header-controls.list-group-item(ng-hide="config.filters.length <= 1 && !config.searchOn")
+				form(role="form")
+					.form-group
+						label.sr-only(for="entities-list-search", ng-show="config.searchOn")
+						input.form-control(type='search', id="entities-list-search", ng-model='searchCriteria', placeholder='Search Entities', ng-show="config.searchOn")
+						.btn-group.btn-group-justified(ng-show="config.filters.length > 1")
+							a.btn.btn-default(ng-repeat="filter in config.filters", ng-click="$parent.currentFilter = filter", ng-class="{active: $parent.currentFilter.value == filter.value && $parent.currentFilter.key == filter.key}") {{filter.label}}
+

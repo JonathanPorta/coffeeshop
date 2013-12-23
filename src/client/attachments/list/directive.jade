@@ -1,0 +1,18 @@
+.attachmentListDirective
+	.panel.panel-default
+		.panel-heading(ng-show="config.title")
+			h4.panel-title
+				{{config.title}}
+				.btn-group.pull-right
+					button.btn.btn-primary.btn-xs(ng-click="createNew()", ng-show="selection.length == 0") Create new
+					button.btn.btn-primary.btn-xs(ng-click="createNew()", ng-show="selection.length == 1") Edit
+			.clearfix
+		.list-group(ng-class="{compact: config.compact}")
+			.attachment-list-item.list-group-item(ng:repeat="attachment in attachments", ng-class="{active: $parent.selection.indexOf($parent.attachments[$index]) > -1}", ng-click="makeSelection(attachment)")
+				div(ng-hide="config.compact")
+					h4.list-group-heading.attachment-list-title
+						{{attachment.title}}
+						small &nbsp;&mdash;&nbsp;{{attachment.type}}
+					p.list-group-item-text.attachment-list-value {{attachment.value}}
+				div(ng-show="config.compact")
+					div(pretty-print, attachment='attachment', params='{"link":"false"}')

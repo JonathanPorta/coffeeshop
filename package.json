@@ -44,11 +44,12 @@
   "dependencies": {
     "express": "~3.4.0",
     "coffee-script": "~1.6.3",
-    "grunt-ngjade": "0.0.0"
+    "grunt-ngjade": "0.0.0",
+    "imagemagick-native": "~0.2.9"
   },
   "scripts": {
     "test": "grunt test",
-    "start": "node src/server/start.js"
+    "start": "node --debug src/server/start.js"
   },
   "author": "Jonathan Porta",
   "license": "BSD"
