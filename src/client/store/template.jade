@@ -1,0 +1,6 @@
+.container
+	.row
+		.col-md-3(category-list, categories="categories", on-selection-change="onSelectCategory(selection)")
+		.col-md-9
+			div(product-list, products="products", status="active", on-selection-change="onSelectProduct(selection)", ng-hide="selectedProduct")
+			div(product-detail, product="selectedProduct", ng-show="selectedProduct")
