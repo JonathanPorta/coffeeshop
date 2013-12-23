@@ -1,0 +1,7 @@
+.entity-list-item.list-group-item(ng:repeat="entity in filteredEntities", ng-class="{active: $parent.selection.indexOf($parent.entities[$index]) > -1}", ng-click="makeSelection(entity)")
+	div
+		.pull-left(ng-show="config.image")
+			img.img-thumbnail.entity-list-thumbnail(ng-src="{{getImage(entity)}}")
+		div(ng-show="config.compact")
+			h5.list-group-heading.entity-list-name {{entity.name}}
+	.clearfix

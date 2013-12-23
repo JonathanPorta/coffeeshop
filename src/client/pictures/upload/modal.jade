@@ -1,0 +1,7 @@
+.modal-dialog
+	.modal-content
+		.modal-header
+			button.close(ng-click="close()", type="button", aria-hidden="true")&times;
+			h4.modal-title Pictures Modal!
+		.modal-body
+			div(picture-upload, on-save="close(entity)")

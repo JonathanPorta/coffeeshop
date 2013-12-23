@@ -13,9 +13,10 @@ JEFRi = require "jefri"
 Stores = require "jefri-stores"
 
 importer = require './importer'
+uploader = require './uploader'
 
 runtime = new JEFRi.Runtime ""
-store = new JEFRi.Stores.FileStore runtime: runtime
+store = new Stores.Stores.FileStore runtime: runtime
 
 express = require "express"
 app =
@@ -27,17 +28,34 @@ app =
 			res.sendfile path.join root, "build", "context.json"
 
 		.post /\/(get|persist)/, (req, res)->
-			console.log 'get/persist', req, res
+#			console.log 'get/persist', req, res
 			method = req.params[0]
 			transaction = new JEFRi.Transaction()
-			transaction.add req.body.entities, true
+			transaction.add req.body.entities
 			store[method](transaction)
 			.then (gotten)->
 				res.jsonp gotten
 
+		.post '/upload', (req, res)->
+			console.log 'Post to /upload! It better be a file!'
+			newPicEntity = runtime.build "Picture", JSON.parse req.body.spec
+			uploader.save(path.join(root, ".uploads"), req.files.file, newPicEntity, (entity)->
+				console.log "FILE WAS UPLOADED WITH SUCCESS AND MUCH FANFARE!"
+				pictrans = new JEFRi.Transaction()
+				pictrans.add entity
+				store['persist'](pictrans)
+				.then (saved)->
+					console.log "Uploaded picture entity was saved."
+					res.jsonp saved
+			)
+
 		.get '/bower/:module/:file', (req, res) ->
 			res.set "content-type", "text/javascript"
 			res.sendfile path.join root, "bower_components", req.params.module, req.params.file
+
+		.get '/bower/bootstrap.js', (req, res) ->
+			res.set "content-type", "text/javascript"
+			res.sendfile path.join root, "bower_components", "bootstrap", "dist", "js", "bootstrap.js"
 
 		.get /^\/vendor/, (req, res)->
 			res.sendfile path.join root, req.path
@@ -63,6 +81,14 @@ app =
 
 		.get '/import', (req, res) ->
 			importer.import "http://localhost:3000/test.json"
+
+		.get '/uploads/:size/:file', (req, res) ->
+			res.set "content-type", "image/jpeg"
+			res.sendfile path.join root, ".uploads", req.params.size, req.params.file
+
+		.get '/placeholder/:size', (req, res) ->
+			res.set "content-type", "image/jpeg"
+			res.sendfile path.join root, "vendor", "placeholder", req.params.size+".jpg"
 
 		.get '/', (req, res) ->
 			res.sendfile path.join root, "build", "index.html"

@@ -1,0 +1,15 @@
+.pictureGalleryDirective
+	.panel.panel-default
+		.panel-heading(ng-show="config.title")
+			h4.panel-title
+				{{config.title}}
+				.btn-group.pull-right
+					button.btn.btn-primary.btn-xs(ng-click="createNew()") Create new
+			.clearfix
+		.panel-body
+			div(ng-hide="config.compact")
+				.thumbnail(ng-show="selection")
+					img(ng-src='{{selection.medium}}')
+					.caption {{selection.name}}
+			div
+				div(picture-list pictures="pictures", on-selection-change="makeSelection(selection)", params='{"compact":"{{config.compact}}"}')

@@ -1,0 +1,6 @@
+.pictureListDirective
+	.row
+		.col-md-12
+			.thumbnail(ng:repeat="picture in pictures", ng-class="{active: $parent.selection.indexOf($parent.pictures[$index]) > -1}", ng-click="makeSelection(picture)")
+				img(ng-src='{{picture.thumbnail}}')
+				.caption(ng-hide="config.compact") {{picture.name}}

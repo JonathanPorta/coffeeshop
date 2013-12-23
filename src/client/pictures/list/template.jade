@@ -1,0 +1,11 @@
+div(ng:controller='pictureList')
+	header
+		h1 Pictures List
+	section.row
+		.col-md-6
+			.thumbnail(ng-show="selectedPicture")
+				img(ng-src='{{selectedPicture.large}}')
+				.caption {{selectedPicture.name}}
+		.col-md-6
+			div(picture-list pictures="pictures", on-selection-change="onSelectPicture(selection)")
+	footer

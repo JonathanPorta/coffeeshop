@@ -5,6 +5,9 @@
 			"product_id": {
 				"type": "string"
 			},
+			"category_id":{
+				"type":"string"
+			},
 			"status": {
 				"type": "string"
 			},
@@ -21,7 +24,35 @@
 				"type": "string"
 			}
 		},
-		"relationships": {}
+		"relationships": {
+			"category": {
+				"type": "has_a",
+				"property": "category_id",
+				"to": {
+					"type": "Category",
+					"property": "category_id"
+				},
+				"back": "products"
+			},
+			"pictures": {
+				"type": "has_many",
+				"property": "product_id",
+				"to": {
+					"type": "Picture",
+					"property": "product_id"
+				},
+				"back": "product"
+			},
+			"attachments": {
+				"type": "has_many",
+				"property": "product_id",
+				"to": {
+					"type": "Attachment",
+					"property": "product_id"
+				},
+				"back": "product"
+			}
+		}
 	},
 	"Attachment": {
 		"key": "attachment_id",
@@ -29,16 +60,88 @@
 			"attachment_id": {
 				"type": "string"
 			},
+			"product_id": {
+				"type": "string"
+			},
 			"type": {
 				"type": "string"
 			},
-			"name": {
+			"title": {
 				"type": "string"
 			},
 			"value": {
 				"type": "string"
 			}
 		},
-		"relationships": {}
+		"relationships": {
+			"product": {
+				"type": "has_a",
+				"property": "product_id",
+				"to": {
+					"type": "Product",
+					"property": "product_id"
+				},
+				"back": "attachments"
+			}
+		}
+	},
+	"Picture": {
+		"key": "picture_id",
+		"properties": {
+			"picture_id": {
+				"type": "string"
+			},
+			"product_id": {
+				"type": "string"
+			},
+			"name": {
+				"type": "string"
+			},
+			"full": {
+				"type": "string"
+			},
+			"large": {
+				"type": "string"
+			},
+			"medium": {
+				"type": "string"
+			},
+			"thumbnail": {
+				"type": "string"
+			}
+		},
+		"relationships": {
+			"product": {
+				"type": "has_a",
+				"property": "product_id",
+				"to": {
+					"type": "Product",
+					"property": "product_id"
+				},
+				"back": "pictures"
+			}
+		}
+	},
+	"Category": {
+		"key": "category_id",
+		"properties": {
+			"category_id": {
+				"type": "string"
+			},
+			"name": {
+				"type": "string"
+			}
+		},
+		"relationships": {
+			"products": {
+				"type": "has_many",
+				"property": "category_id",
+				"to": {
+					"type": "Product",
+					"property": "category_id"
+				},
+				"back": "category"
+			}
+		}
 	}
 }}

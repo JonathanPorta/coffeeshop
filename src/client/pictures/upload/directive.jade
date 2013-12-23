@@ -1,0 +1,13 @@
+.pictureUploadDirective
+	header
+		h1.attachments-edit-header(ng-hide="newPicture.name") New Picture Upload
+		h1.attachments-edit-header(ng-show="newPicture.name") {{newPicture.name}}
+	section.row
+		.form-group
+			label.sr-only(for="pictures-upload-name")
+			input.form-control.horizontal(id="pictures-upload-name", name="name", ng-model="name", placeholder="Name")
+		.form-group
+			label.sr-only(for="pictures-upload-file")
+			input.form-control.horizontal(file-change="doUpload", id="pictures-upload-file", name="file", type="file", placeholder="File to upload...", data-uploaded='')
+		.form-group
+			button.btn.btn-primary.btn-block(ng-click="save()") Save it!
