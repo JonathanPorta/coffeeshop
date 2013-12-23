@@ -1,0 +1,10 @@
+.productCartDirective
+	form(method="post", action="http://www.cart32hostingred.com/cgi-bin/cart32.exe/CentralHobbies-AddItem", target="_blank")
+		input(type="hidden", name="Item", value="{{product.name}}")
+		input(type="hidden", name="PartNo", value="{{product.partno}}")
+		input(type="hidden", name="Price", value="{{product.price}}")
+		.input-group
+			span.input-group-addon QTY:
+			input.form-control(type="text", name="Qty", value=1, maxlength="2")
+			span.input-group-btn
+				button.btn.btn-primary Add to cart

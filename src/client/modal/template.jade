@@ -1,0 +1,10 @@
+h4 This view is an example of how a directive can be placed inside of another and still access the correct scope. The controller being used is the admin controller.
+
+div(bs-dialog)
+	button.btn.btn-primary Select products
+	.dialog-modal-title productList Directive in Modal Directive Example
+	.dialog-modal-content
+		div(product-list, products="products", initial-selection='relatedProducts', on-selection-change="onRelatedProductsChange(selection)", params='{"thumbnail":"false","description":"false","price":"false","qty":"false","addToCart":"false","multiselect":"true","title":"Related products","compact":"true"}')
+	.dialog-modal-footer
+
+div(product-list, products="relatedProducts", params='{"thumbnail":"false","description":"false","price":"false","qty":"false","addToCart":"false","multiselect":"false","title":"Currently selected products","compact":"true", "search":"false"}')

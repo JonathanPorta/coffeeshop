@@ -1,0 +1,26 @@
+.admin.container
+	.row
+		.col-md-4(entity-list, entities="products", on-selection-change='onSelectMainProduct(selection)', listview-template="products/listview", params='{"searchOn": "name", "defaultFilter":{"value":"active","key":"status"}, "filters": [ {"label":"Active","value":"active","key":"status"}, {"label":"Pending","value":"pending","key":"status"}, {"label":"Hidden","value":"hidden","key":"status"}, {"label":"All","value":"","key":"status"} ]}')
+		.col-md-8
+			.container(ng-show="selectedProduct")
+				.row
+					.col-md-12(ng-show="selectedProduct.name")
+						h2.admin-product-edit-header Editing a product
+					.col-md-12(ng-hide="selectedProduct.name")
+						h2.admin-product-edit-header New product
+				.row
+					.col-md-6(product-edit, product="selectedProduct", params='{"title":"The basics"}')
+					.col-md-3(entity-list, entities='relatedCategories', on-selection-change='alert(category)', listview-template="categories/listview", params='{"image":"false","title":"Categories"}')
+					.col-md-3(entity-list, entities='products', on-selection-change='alert(category)', listview-template="products/listview", params='{"image":"false","title":"Related products","compact":"true"}')
+				.row
+					//-.col-md-6(picture-gallery, pictures='relatedPictures', on-create-new='onCreateNewPicture()', params='{"compact":"true","title":"Product pictures"}')
+					.col-md-6(entity-list, entities='relatedPictures', on-create-new='onCreateNewPicture()', listview-template="pictures/listview", params='{"compact":"true","title":"Product pictures"}')
+					.col-md-6(entity-list, entities='relatedAttachments', on-selection-change='onSelectAttachment(selection)', listview-template="attachments/listview", params='{"image":"false","title":"Product attachments","compact":"true"}')
+			.container(ng-hide="selectedProduct")
+				.row
+					.col-md-12
+						center
+							h2 :(
+							h3 No product is currently selected for editing.
+							h3 Please select the product you would like to edit, or
+							button.btn.btn-lg.btn-primary(ng-click="newProduct()") Create a new product

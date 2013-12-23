@@ -8,8 +8,11 @@
 				label.sr-only(for="attachments-edit-type")
 				select.form-control.horizontal(id="attachments-edit-type", ng-model='currentAttachment.type', style="width:20%")
 					option(value="") --select type--
-					option(value="[link]") Link
-					option(value="[html]") HTML
+					option(value="link") Link
+					option(value="download") Download
+					option(value="video") Video
+					option(value="attribute") Attribute
+					option(value="html") HTML
 				label.sr-only(for="attachments-edit-title")
 				input.form-control.horizontal(id="attachments-edit-title", ng-model="currentAttachment.title", placeholder="Title", style="width:80%")
 			.form-group

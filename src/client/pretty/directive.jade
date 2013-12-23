@@ -1,0 +1,34 @@
+.prettyPrintDirective
+	span(ng-show='attachment.type == "link"')
+		a(href='{{attachment.value}}', target='_blank', ng-show='config.link')
+			.glyphicon.glyphicon-new-window.span
+			&nbsp;
+			{{attachment.title}}
+		span(ng-hide='config.link')
+			.glyphicon.glyphicon-new-window.span
+			&nbsp;
+			{{attachment.title}}
+	span(ng-show='attachment.type == "download"')
+		&nbsp;
+		a(href='{{attachment.value}}', target='_blank', ng-show='config.link')
+			.glyphicon.glyphicon-cloud-download.span
+			&nbsp;
+			{{attachment.title}}
+		span(ng-hide='config.link')
+			.glyphicon.glyphicon-cloud-download.span
+			&nbsp;
+			{{attachment.title}}
+	span(ng-show='attachment.type == "video"')
+		&nbsp;
+		a(href='{{attachment.value}}', target='_blank', ng-show='config.link')
+			.glyphicon.glyphicon-facetime-video.span
+			&nbsp;
+			{{attachment.title}}
+		span(ng-hide='config.link')
+			.glyphicon.glyphicon-facetime-video.span
+			&nbsp;
+			{{attachment.title}}
+	span(ng-show='attachment.type == "attribute"')
+		strong
+			{{attachment.title}}:
+		{{attachment.value}}

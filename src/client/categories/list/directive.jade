@@ -1,0 +1,7 @@
+.categoryListDirective
+	.panel.panel-default
+		.panel-heading(ng-show="config.title")
+			h4.panel-title {{config.title}}
+		.list-group
+				a.category.list-group-item(ng:repeat="category in categories | orderBy:name", ng-click="makeSelection(category)", ng-class="{active: $parent.selection.indexOf($parent.categories[$index]) > -1}")
+					|{{category.name}}
