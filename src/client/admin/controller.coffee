@@ -18,6 +18,35 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 			lastModified = new Date / 1e3
 		-> lastModified
 
+	$scope.onCreateNewRelatedProduct = ()->
+#		if $scope.selectedRelatedProduct
+#			console.log "Editing and RelatedProduct"
+#			selectedRelatedProduct = $scope.selectedRelatedProduct
+#		else
+#			console.log "Making a new RelatedProduct!"
+#			selectedRelatedProduct = storage.build "RelatedProduct", {}
+
+		cb = (prod)->
+			$scope.onNewRelatedProduct(prod)
+
+		prods = $scope.products
+		newRelatedProductDialogCtrl = ($scope, $modalInstance)->
+			console.log "This is the controller of the modal! yay!"
+			$scope.products = prods
+			$scope.onProductSelected = (selection)->
+				cb(selection)
+				$scope.close()
+			$scope.close = (e)->
+				$modalInstance.close(e)
+
+		newRelatedProductDialog = $modal.open({
+			templateUrl: "products/list/modal"
+			backdrop: true
+			keyboard: true
+			controller: newRelatedProductDialogCtrl
+		})
+		console.log newRelatedProductDialog
+
 	$scope.onCreateNewAttachment = ()->
 		if $scope.selectedAttachment
 			console.log "Editing and Attachment"
@@ -81,10 +110,19 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 		$scope.relatedAttachments = prod.attachments
 		$scope.relatedCategories = []
 		$scope.relatedCategories.push prod.category
+		$scope.onRelatedProductsChange()
 
 	$scope.onSelectAttachment = (att)->
 		console.log "Admin Controller - Attachment Selected", att
 		$scope.selectedAttachment = att
+
+	$scope.onSelectPicture = (pic)->
+		console.log "Admin Controller - Picture Selected", pic
+		$scope.selectedPicture = pic
+
+	$scope.onSelectCategory = (cat)->
+		console.log "Admin Controller - Category Selected", cat
+		$scope.selectedCategory = cat
 
 	$scope.onNewAttachment = (att)->
 		console.log "Admin Controller - New Attachment Selected", att
@@ -94,9 +132,27 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 		save att
 		save $scope.selectedProduct
 
-	$scope.onRelatedProductsChange = (prods)->
-		console.log "Admin Controller - Related Products Changed!", prods
-		$scope.relatedProducts = prods
+	$scope.onNewRelatedProduct = (prod)->
+		console.log "Admin Controller - New RelatedProduct Selected", prod
+		relatedProdIds = []
+		if $scope.selectedProduct.relatedProducts
+			relatedProdIds = JSON.parse $scope.selectedProduct.relatedProducts
+
+		if prod.product_id not in relatedProdIds
+			relatedProdIds.push prod.product_id
+			$scope.relatedProducts.push prod
+			$scope.selectedProduct.relatedProducts = JSON.stringify relatedProdIds
+			save $scope.selectedProduct
+		$scope.onRelatedProductsChange()
+
+	$scope.onRelatedProductsChange = ()->
+		console.log "Admin Controller - Related Products Changed!"
+		storage.getRelatedProducts($scope.selectedProduct)
+		.then (related)->
+			console.log "Admin Controller - Got Related Prods!", related
+			$scope.relatedProducts = related
+		.catch (err)->
+			console.log "Error getting those related products", err
 
 	$scope.onRelatedAttachmentsChange = (atts)->
 		console.log "Admin Controller - Related Attachments Changed!", atts
@@ -121,8 +177,10 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 
 	storage.ready.then (data)->
 		console.log "Admin Controller - Storage Ready", data
-		$scope.products = data.products
-		$scope.categories = data.categories
+		storage.getAllProducts()
+			.then (data)->
+				$scope.products = data.products
+				$scope.categories = data.categories
 #		$scope.onRelatedAttachmentsChange data.attachments
 #		$scope.relatedPictures = data.pictures
 		#$scope.$watch watchExp(list), save, true
