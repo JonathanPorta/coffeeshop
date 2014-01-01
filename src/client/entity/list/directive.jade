@@ -1,7 +1,13 @@
 .entityListDirective
 	.panel.panel-default
 		.panel-heading(ng-show="config.title")
-			h4.panel-title {{config.title}}
+			h4.panel-title
+				{{config.title}}
+				.btn-group.pull-right(ng-show="config.newButton && selection.length == 0")
+					button.btn.btn-primary.btn-xs(ng-click="createNew()") {{config.newButton}}
+				.btn-group.pull-right(ng-show="config.newButton && selection.length == 1")
+					button.btn.btn-primary.btn-xs(ng-click="createNew()") {{config.editButton}}
+			.clearfix
 		.list-group(ng-class="{compact: config.compact}")
 			.entity-list-header-controls.list-group-item(ng-hide="config.filters.length <= 1 && !config.searchOn")
 				form(role="form")

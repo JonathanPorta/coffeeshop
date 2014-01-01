@@ -1,2 +1,2 @@
-a.category.entity-list-item.list-group-item(ng:repeat="entity in filteredEntities | orderBy:name", ng-click="makeSelection(entity)", ng-class="{active: $parent.selection.indexOf($parent.entities[$index]) > -1}")
+a.category.entity-list-item.list-group-item(ng:repeat="entity in filteredEntities | orderBy:name", ng-click="makeSelection(entity)", href="#/category/{{entity.category_id}}", ng-class="{active: $parent.selection.indexOf($parent.filteredEntities[$index]) > -1 || $parent.parentSelection == $parent.filteredEntities[$index]}")
 	|{{entity.name}}
