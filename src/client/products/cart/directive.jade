@@ -1,10 +1,11 @@
-.productCartDirective
+.productCartDirective(ng-class="{inline:config.inline}")
 	form(method="post", action="http://www.cart32hostingred.com/cgi-bin/cart32.exe/CentralHobbies-AddItem", target="_blank")
 		input(type="hidden", name="Item", value="{{product.name}}")
 		input(type="hidden", name="PartNo", value="{{product.partno}}")
-		input(type="hidden", name="Price", value="{{product.price}}")
-		.input-group
+		input(type="hidden", name="Price", value="{{product.price | productPrice}}")
+		.input-group(ng-show="config.inline")
 			span.input-group-addon QTY:
 			input.form-control(type="text", name="Qty", value=1, maxlength="2")
 			span.input-group-btn
 				button.btn.btn-primary Add to cart
+		button.btn(ng-hide="config.inline") Add to cart

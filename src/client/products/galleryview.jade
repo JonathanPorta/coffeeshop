@@ -1,0 +1,10 @@
+.entityListGallery.panel-body
+	.row
+		.col-md-12
+			//-div.galleryThumbsWrapper
+			.thumbnail(ng:repeat="entity in filteredEntities", ng-class="{active: $parent.selection.indexOf($parent.filteredEntities[$index]) > -1}", ng-click="makeSelection(entity)")
+				img(ng-src='{{getImage(entity)}}', class="{{config.imgClass}}")
+				.caption(ng-hide="config.compact")
+					h4 {{entity.name}}
+					div(product-stock, product='entity')
+					h5 {{entity.price | productPrice}}

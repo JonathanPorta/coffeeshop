@@ -1,46 +1,37 @@
-.productDetailDirective
+.productDetailDirective.container
 	.row
-		.col-md-3
-			.row
-				img.img-thumbnail.product-detail-picture(width="200px", height="200px", src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAFJklEQVR4Xu2Y2yulbxiGH7s4sjkhJSmbUM5wIET82UgpuyNGiCShZJs4kP30vmUa67d+rGdMz1h311fTZNYz3d9z3dd877em4urq6tW4IFAigQqEKZEUY5kAwiCCiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8NlLczJyYltbm7mFqenp//T5v7+vqVfv3/+8vJiOzs7dnFxYa+vr9bc3Gw9PT1WWVn5qQ3ReZ/e0D8YKFthUuF3d3e5/GLCPD8/2+Lioj08PGQx3oQ6ODiwvb096+/vz39va2srC9Pe3v4h/ui8f+BCSZFlK8zh4WEueWZmpqgwx8fHdnl5aefn5+8+X1lZsdvbWxsfH88iLSwsWH19vQ0NDdnS0lL+s5GREXsTrq6uLn92dHT0V/OGh4dLKui7DZWtMG8giwmTSk/ld3d32/r6+jth5ufn7enpyaamprIcc3NzVlVVZZOTk3Z6emobGxs2MDBg19fXWZLBwUFrbGz81dvfzPtuMpRyP5LCnJ2d5aNqdHTUZmdn3wlTWHj6uaKiIguUrvQEenx8tPv7e2ttbf11dH0k6FfySinpO81ICrO6umpNTU35CVMoSLEnTHV1tU1MTOReUvk/fvzIEiXhamtr3/VV7AnzlbzvJEMp9yIpzFuphQDGxsbyEXVzc/PuHaahoSG/p6QrHUnpvScdV52dndbR0fGpMF/JK6Wk7zQjKczvgAufCOlleXd31/r6+vLY9va29fb2WltbW/6qvba2Zl1dXfmlN32jSiKll+KPjqQ/zftOIpR6L2UrzP/9qy78/5hCYdKTI73fpKMnHTstLS356EqCLC8vW01NjaVvMGkuvc+k39PP6Sgrdv1pXsoux6tshSlH2Ar3jDAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWifgIScd2mKI1C6AAAAABJRU5ErkJggg==")
-			.row.center-block
-				img.img-thumbnail.product-detail-thumbnail(width="65px", height="65px", src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAFJklEQVR4Xu2Y2yulbxiGH7s4sjkhJSmbUM5wIET82UgpuyNGiCShZJs4kP30vmUa67d+rGdMz1h311fTZNYz3d9z3dd877em4urq6tW4IFAigQqEKZEUY5kAwiCCiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8NlLczJyYltbm7mFqenp//T5v7+vqVfv3/+8vJiOzs7dnFxYa+vr9bc3Gw9PT1WWVn5qQ3ReZ/e0D8YKFthUuF3d3e5/GLCPD8/2+Lioj08PGQx3oQ6ODiwvb096+/vz39va2srC9Pe3v4h/ui8f+BCSZFlK8zh4WEueWZmpqgwx8fHdnl5aefn5+8+X1lZsdvbWxsfH88iLSwsWH19vQ0NDdnS0lL+s5GREXsTrq6uLn92dHT0V/OGh4dLKui7DZWtMG8giwmTSk/ld3d32/r6+jth5ufn7enpyaamprIcc3NzVlVVZZOTk3Z6emobGxs2MDBg19fXWZLBwUFrbGz81dvfzPtuMpRyP5LCnJ2d5aNqdHTUZmdn3wlTWHj6uaKiIguUrvQEenx8tPv7e2ttbf11dH0k6FfySinpO81ICrO6umpNTU35CVMoSLEnTHV1tU1MTOReUvk/fvzIEiXhamtr3/VV7AnzlbzvJEMp9yIpzFuphQDGxsbyEXVzc/PuHaahoSG/p6QrHUnpvScdV52dndbR0fGpMF/JK6Wk7zQjKczvgAufCOlleXd31/r6+vLY9va29fb2WltbW/6qvba2Zl1dXfmlN32jSiKll+KPjqQ/zftOIpR6L2UrzP/9qy78/5hCYdKTI73fpKMnHTstLS356EqCLC8vW01NjaVvMGkuvc+k39PP6Sgrdv1pXsoux6tshSlH2Ar3jDAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWifgIScd2mKI1C6AAAAABJRU5ErkJggg==")
-				img.img-thumbnail.product-detail-thumbnail(width="65px", height="65px", src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAFJklEQVR4Xu2Y2yulbxiGH7s4sjkhJSmbUM5wIET82UgpuyNGiCShZJs4kP30vmUa67d+rGdMz1h311fTZNYz3d9z3dd877em4urq6tW4IFAigQqEKZEUY5kAwiCCiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8NlLczJyYltbm7mFqenp//T5v7+vqVfv3/+8vJiOzs7dnFxYa+vr9bc3Gw9PT1WWVn5qQ3ReZ/e0D8YKFthUuF3d3e5/GLCPD8/2+Lioj08PGQx3oQ6ODiwvb096+/vz39va2srC9Pe3v4h/ui8f+BCSZFlK8zh4WEueWZmpqgwx8fHdnl5aefn5+8+X1lZsdvbWxsfH88iLSwsWH19vQ0NDdnS0lL+s5GREXsTrq6uLn92dHT0V/OGh4dLKui7DZWtMG8giwmTSk/ld3d32/r6+jth5ufn7enpyaamprIcc3NzVlVVZZOTk3Z6emobGxs2MDBg19fXWZLBwUFrbGz81dvfzPtuMpRyP5LCnJ2d5aNqdHTUZmdn3wlTWHj6uaKiIguUrvQEenx8tPv7e2ttbf11dH0k6FfySinpO81ICrO6umpNTU35CVMoSLEnTHV1tU1MTOReUvk/fvzIEiXhamtr3/VV7AnzlbzvJEMp9yIpzFuphQDGxsbyEXVzc/PuHaahoSG/p6QrHUnpvScdV52dndbR0fGpMF/JK6Wk7zQjKczvgAufCOlleXd31/r6+vLY9va29fb2WltbW/6qvba2Zl1dXfmlN32jSiKll+KPjqQ/zftOIpR6L2UrzP/9qy78/5hCYdKTI73fpKMnHTstLS356EqCLC8vW01NjaVvMGkuvc+k39PP6Sgrdv1pXsoux6tshSlH2Ar3jDAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWifgIScd2mKI1C6AAAAABJRU5ErkJggg==")
-				img.img-thumbnail.product-detail-thumbnail(width="65px", height="65px", src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAFJklEQVR4Xu2Y2yulbxiGH7s4sjkhJSmbUM5wIET82UgpuyNGiCShZJs4kP30vmUa67d+rGdMz1h311fTZNYz3d9z3dd877em4urq6tW4IFAigQqEKZEUY5kAwiCCiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8MIgwMuAgjjwsUwwuCAiwDCuHAxjDA44CKAMC5cDCMMDrgIIIwLF8NlLczJyYltbm7mFqenp//T5v7+vqVfv3/+8vJiOzs7dnFxYa+vr9bc3Gw9PT1WWVn5qQ3ReZ/e0D8YKFthUuF3d3e5/GLCPD8/2+Lioj08PGQx3oQ6ODiwvb096+/vz39va2srC9Pe3v4h/ui8f+BCSZFlK8zh4WEueWZmpqgwx8fHdnl5aefn5+8+X1lZsdvbWxsfH88iLSwsWH19vQ0NDdnS0lL+s5GREXsTrq6uLn92dHT0V/OGh4dLKui7DZWtMG8giwmTSk/ld3d32/r6+jth5ufn7enpyaamprIcc3NzVlVVZZOTk3Z6emobGxs2MDBg19fXWZLBwUFrbGz81dvfzPtuMpRyP5LCnJ2d5aNqdHTUZmdn3wlTWHj6uaKiIguUrvQEenx8tPv7e2ttbf11dH0k6FfySinpO81ICrO6umpNTU35CVMoSLEnTHV1tU1MTOReUvk/fvzIEiXhamtr3/VV7AnzlbzvJEMp9yIpzFuphQDGxsbyEXVzc/PuHaahoSG/p6QrHUnpvScdV52dndbR0fGpMF/JK6Wk7zQjKczvgAufCOlleXd31/r6+vLY9va29fb2WltbW/6qvba2Zl1dXfmlN32jSiKll+KPjqQ/zftOIpR6L2UrzP/9qy78/5hCYdKTI73fpKMnHTstLS356EqCLC8vW01NjaVvMGkuvc+k39PP6Sgrdv1pXsoux6tshSlH2Ar3jDAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWiEEahxcAdECYQtkIUwii0GLgDwgTCVohCGIUWA3dAmEDYClEIo9Bi4A4IEwhbIQphFFoM3AFhAmErRCGMQouBOyBMIGyFKIRRaDFwB4QJhK0QhTAKLQbugDCBsBWifgIScd2mKI1C6AAAAABJRU5ErkJggg==")
+		.col-md-3.pictureGallery(picture-gallery, pictures="$parent.productPictures")
 		.col-md-6
-			header
-				h1.products-detail-header(ng-hide="product.name") No Product Name :(
-				h1.products-detail-header(ng-show="product.name")
-					|{{product.name}}
-					small - {{product.partno}}
-			section.row
-				strong Description: 
-				{{product.description}}
-			footer
+			.row
+				.col-md-12
+					h1.products-detail-header(ng-hide="product.name") No Product Name :(
+					h1.products-detail-header(ng-show="product.name")
+						|{{product.name}}
+						small - {{product.partno}}
+			.row
+				.col-md-12
+					strong Description: 
+					{{product.description}}
 		.col-md-3
 			.panel.panel-primary
 				.panel-heading.product-detail-price-container
 					h5.product-detail-price
-						| $2.95
-					p
-						button.btn Add to cart
+						| {{product.price | productPrice}}
+					div(product-cart, product="product", params='{}')
 				.panel-body.text-center
-					span.label.label-success In Stock!
-				ul.list-group
-					li.list-group-item.text-center
-						strong
-							|Manufacturer:
-						p
-							|Testy products, Inc.
-					li.list-group-item.text-center
-						strong
-							|SKU: 
-						|{{product.sku}}
+					div(product-stock, product='product')
+				div(entity-list, ng-show='$parent.productAttachments.length > 0', entities='$parent.productAttachments', listview-template="attachments/listview", params='{"image":"false","compact":"true"}')
+
 	.row
-		.col-md-12
-			.panel.panel-primary
-				.panel-heading
-					h5.panel-title Related Products
-				.panel-body.text-center
+		.col-md-12(entity-list, ng-show='$parent.relatedProducts.length > 0', entities='$parent.relatedProducts', on-selection-change='', on-create-new='onCreateNewRelatedProduct()', listview-template="products/gallery", params='{"image":"thumbnail","title":"Related products","compact":"false"}')
 
-
+				//-ul.list-group
+					//-li.list-group-item.text-center
+						//-strong
+							//-|Manufacturer:
+						//-p
+							//-|Testy products, Inc.
+					//-li.list-group-item.text-center
+						//-strong
+							//-|SKU: 
+						//-|{{product.sku}}

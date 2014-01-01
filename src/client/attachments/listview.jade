@@ -1,4 +1,4 @@
-.entity-list-item.list-group-item(ng:repeat="entity in filteredEntities", ng-class="{active: $parent.selection.indexOf($parent.entities[$index]) > -1}", ng-click="makeSelection(entity)")
+.entity-list-item.list-group-item(ng:repeat="entity in filteredEntities", ng-class="{active: $parent.selection.indexOf($parent.filteredEntities[$index]) > -1}", ng-click="makeSelection(entity)")
 	div(ng-hide="config.compact")
 		h4.list-group-heading.attachment-list-title
 			{{entity.title}}

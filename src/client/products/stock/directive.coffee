@@ -1,21 +1,19 @@
-angular.module('coffeeshop').directive "productCart", ()->
+angular.module('coffeeshop').directive "productStock", ()->
 	restrict: "A"
 	scope: {
 		product: "="
 		params: "@"
 	}
-	templateUrl: "products/cart/widget"
+	templateUrl: "products/stock/widget"
 	replace: true
 	transclude: false
 	link: (scope, element, attrs, controller)->
-		console.log "productCart Directive Link Function!"
+		console.log "productStock Directive Link Function!"
 		console.log scope, element, attrs, controller
 	controller: ($scope)->
-		console.log "productCart Directive ctrl"
+		console.log "productStock Directive ctrl"
 		#Default config options
-		defaults = {
-			"inline": false
-		}
+		defaults = {}
 
 		#Setup for the override
 		params = {}

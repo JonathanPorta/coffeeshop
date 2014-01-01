@@ -15,5 +15,10 @@
 					label.sr-only(for="products-edit-manufacturer")
 					input.form-control.horizontal(id="products-edit-manufacturer", ng-model="product.manufacturer", placeholder="Manufacturer", style="width:60%")
 				.form-group
+					label.sr-only(for="products-edit-price")
+					input.form-control.horizontal(id="products-edit-price", ng-model="product.price", placeholder="Price", style="width:50%")
+					label.sr-only(for="products-edit-stock")
+					input.form-control.horizontal(id="products-edit-stock", ng-model="product.stock", placeholder="Stock", style="width:50%")
+				.form-group
 					label.sr-only(for="products-edit-description")
 					textarea.form-control(id="products-edit-description", ng-model="product.description", placeholder="Description")
