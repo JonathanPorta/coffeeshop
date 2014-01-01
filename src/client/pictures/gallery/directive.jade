@@ -1,15 +1,17 @@
+//-.pictureGalleryDirective
+	//-.panel.panel-default
+		//-.panel-heading(ng-show="config.title")
+			//-h4.panel-title
+				//-{{config.title}}
+				//-.btn-group.pull-right
+					//-button.btn.btn-primary.btn-xs(ng-click="createNew()") Create new
+			//-.clearfix
+		//-.panel-body
 .pictureGalleryDirective
-	.panel.panel-default
-		.panel-heading(ng-show="config.title")
-			h4.panel-title
-				{{config.title}}
-				.btn-group.pull-right
-					button.btn.btn-primary.btn-xs(ng-click="createNew()") Create new
-			.clearfix
-		.panel-body
-			div(ng-hide="config.compact")
-				.thumbnail(ng-show="selection")
-					img(ng-src='{{selection.medium}}')
-					.caption {{selection.name}}
-			div
-				div(picture-list pictures="pictures", on-selection-change="makeSelection(selection)", params='{"compact":"{{config.compact}}"}')
+	div(ng-hide="config.compact")
+		div(ng-show="selection")
+			img.mainPhoto(ng-src='{{selection.medium}}')
+			//-.caption {{selection.name}}
+	div
+		//-div(picture-list pictures="pictures", on-selection-change="makeSelection(selection)", params='{"compact":"{{config.compact}}"}')
+		div(entity-list, entities='pictures', on-selection-change='makeSelection(selection)', listview-template="pictures/gallery", params='{"compact":"true","imgClass":"tiny"}')

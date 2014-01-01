@@ -41,6 +41,14 @@ angular.module('coffeeshop').directive "pictureGallery", ()->
 			#If not multiselect, this will contain at most one entity, duh!
 			$scope.selection = null
 
+			$scope.$watch 'pictures', ()->
+				if $scope.pictures.length > 0
+					#set the first image to the selected
+					$scope.makeSelection $scope.pictures[0]
+				else
+					#we dont have pics, so need to remove any left overs
+					$scope.selection = null
+
 			$scope.makeSelection = (entity)->
 				console.log "pictureGallery Directive - makeSelection() Called!", entity, $scope.selection
 				#set the selection
