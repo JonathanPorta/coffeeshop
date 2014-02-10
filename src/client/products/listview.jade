@@ -8,7 +8,7 @@
 			img.img-thumbnail.entity-list-thumbnail(ng-src="{{getImage(entity)}}")
 		div(ng-hide="config.compact")
 			h4.list-group-heading.entity-list-name
-				a(href="#/product/{{entity.product_id}}") {{entity.name}}
+				a(ng-class="{active: $parent.selection.indexOf($parent.filteredEntities[$index]) > -1}", href="{{buildUrl('#/product/'+entity.product_id)}}") {{entity.name}}
 			h5.list-group-heading.entity-list-partno {{entity.partno}}
 			p.list-group-item-text.entity-list-description(ng-show="config.description") {{$parent.trimIt(entity.description, 150)}}...
 		div(ng-show="config.compact")

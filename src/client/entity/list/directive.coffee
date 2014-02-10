@@ -38,6 +38,7 @@ angular.module('coffeeshop').directive "entityList", ($templateCache)->
 					"large"    : "/placeholder/large"
 					"fullsize" : "/placeholder/fullsize"
 				"imgClass" : ""
+				"allowNav" : true
 				"newButton" : false #string label, or false
 				"editButton" : false #defaults to same as newButton. This is only the label of the button.
 			}
@@ -94,6 +95,11 @@ angular.module('coffeeshop').directive "entityList", ($templateCache)->
 			$scope.createNew = ()->
 				console.log "entityList Directive - createNew() Called!"
 				$scope.onCreateNew()
+
+			$scope.buildUrl = (url)->
+				if !$scope.config.allowNav
+					url = ""
+				url
 
 			#Nothing like a description that just won't shutup! Nowhamsayin?
 			$scope.trimIt = (str, length = 100)->

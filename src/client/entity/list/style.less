@@ -1,14 +1,16 @@
-.entityListDirective .panel{border-radius: 0}
+.entityListDirective .panel{border-radius: 0;}
 
 .entity-list-thumbnail{margin-right: 10px;}
 h4.entity-list-name, h5.entity-list-partno{margin-top:2px; margin-bottom:2px;}
 .entity-list-partno{}
 .entity-list-description{overflow: hidden;text-overflow:ellipsis;}
-.entity-list-item{cursor:pointer;}
+.entity-list-item{border:none;}
+.entity-list-item+.entity-list-item{border-top: 1px solid #DDD;}
+/*.entity-list-item:first-of-type{border: none;}*/
 
 .entity-list-header-controls{padding:0;}
 
-.entity-list-header-controls .form-group{margin-bottom: -1px;}
+.entity-list-header-controls .form-group{margin-bottom: 0px;}
 .entity-list-header-controls .form-control{border-radius: 0; border: 1px solid transparent; -webkit-box-shadow: none; box-shadow: none;}
 .entity-list-header-controls .form-control:focus{border-color: #66afe9;}
 
@@ -21,6 +23,7 @@ h4.entity-list-name, h5.entity-list-partno{margin-top:2px; margin-bottom:2px;}
 .compact .list-group-item h5{margin-top: 3px; margin-bottom: 3px;}
 .compact .list-group-item small{font-size: 80%; color: #777777;}
 
-.entityListGallery .thumbnail{display: inline-block;}
+.entityListGallery .thumbnail{display: inline-table;}
+.entityListGallery.productListGallery .thumbnail{width: 150px; height: 230px; text-align: center; margin: 5px; border-radius: 0;}
 
 .thumbnail.active{background-color:#428bca;}

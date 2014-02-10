@@ -1,7 +1,5 @@
-.modal-dialog
-	.modal-content
-		.modal-header
-			button.close(ng-click="close()", type="button", aria-hidden="true")&times;
-			h4.modal-title Products Modal!
-		.modal-body
-			div(entity-list, entities="products", on-selection-change='onProductSelected(selection)', listview-template="products/listview", params='{"searchOn": "name", "defaultFilter":{"value":"active","key":"status"}, "filters": [ {"label":"Active","value":"active","key":"status"}, {"label":"Pending","value":"pending","key":"status"}, {"label":"Hidden","value":"hidden","key":"status"}, {"label":"All","value":"","key":"status"} ]}')
+.modal-header
+	button.close(ng-click="close()", type="button", aria-hidden="true")&times;
+	h4.modal-title Products Modal!
+.modal-body
+	div(entity-list, entities="products", on-selection-change='onProductSelected(selection)', listview-template="products/listview", params='{"searchOn": "name", "defaultFilter":{"value":"active","key":"status"}, "filters": [ {"label":"Active","value":"active","key":"status"}, {"label":"Pending","value":"pending","key":"status"}, {"label":"Hidden","value":"hidden","key":"status"}, {"label":"All","value":"","key":"status"} ]}')

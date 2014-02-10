@@ -1,7 +1,5 @@
-.modal-dialog
-	.modal-content
-		.modal-header
-			button.close(ng-click="close()", type="button", aria-hidden="true")&times;
-			h4.modal-title Attachments Modal!
-		.modal-body
-			div(attachment-edit, on-save="close()", current-attachment="currentAttachment")
+.modal-header
+	button.close(ng-click="close()", type="button", aria-hidden="true")&times;
+	h4.modal-title Attachments Modal!
+.modal-body
+	div(attachment-edit, on-save="close()", current-attachment="currentAttachment")

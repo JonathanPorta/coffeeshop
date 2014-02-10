@@ -9,7 +9,6 @@
 			&nbsp;
 			{{attachment.title}}
 	span(ng-show='attachment.type == "download"')
-		&nbsp;
 		a(href='{{attachment.value}}', target='_blank', ng-show='config.link')
 			.glyphicon.glyphicon-cloud-download.span
 			&nbsp;
@@ -19,7 +18,6 @@
 			&nbsp;
 			{{attachment.title}}
 	span(ng-show='attachment.type == "video"')
-		&nbsp;
 		a(href='{{attachment.value}}', target='_blank', ng-show='config.link')
 			.glyphicon.glyphicon-facetime-video.span
 			&nbsp;
@@ -29,6 +27,4 @@
 			&nbsp;
 			{{attachment.title}}
 	span(ng-show='attachment.type == "attribute"')
-		strong
-			{{attachment.title}}:
-		{{attachment.value}}
+			{{attachment.title}}:&nbsp;{{attachment.value}}

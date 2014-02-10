@@ -9,9 +9,14 @@
 						|{{product.name}}
 						small - {{product.partno}}
 			.row
-				.col-md-12
+				p
 					strong Description: 
 					{{product.description}}
+				p(ng-show="$parent.attributes.length > 0")
+					strong Features:
+					ul
+						li(ng-repeat="attribute in $parent.attributes")
+							div(pretty-print, attachment='attribute', params='{"link":"false"}')
 		.col-md-3
 			.panel.panel-primary
 				.panel-heading.product-detail-price-container
@@ -20,18 +25,6 @@
 					div(product-cart, product="product", params='{}')
 				.panel-body.text-center
 					div(product-stock, product='product')
-				div(entity-list, ng-show='$parent.productAttachments.length > 0', entities='$parent.productAttachments', listview-template="attachments/listview", params='{"image":"false","compact":"true"}')
-
+				div(entity-list, ng-show='$parent.externals.length > 0', entities='$parent.externals', on-selection-change='', listview-template="attachments/listview", params='{"image":"false","compact":"true","manageSelection":false}')
 	.row
-		.col-md-12(entity-list, ng-show='$parent.relatedProducts.length > 0', entities='$parent.relatedProducts', on-selection-change='', on-create-new='onCreateNewRelatedProduct()', listview-template="products/gallery", params='{"image":"thumbnail","title":"Related products","compact":"false"}')
-
-				//-ul.list-group
-					//-li.list-group-item.text-center
-						//-strong
-							//-|Manufacturer:
-						//-p
-							//-|Testy products, Inc.
-					//-li.list-group-item.text-center
-						//-strong
-							//-|SKU: 
-						//-|{{product.sku}}
+		.col-md-12(entity-list, ng-show='$parent.relatedProducts.length > 0', entities='$parent.relatedProducts', on-selection-change='', on-create-new='onCreateNewRelatedProduct()', listview-template="products/gallery", params='{"image":"thumbnail","title":"Related products","compact":false,"manageSelection":false}')
