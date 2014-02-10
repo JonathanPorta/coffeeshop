@@ -1,0 +1,5 @@
+div(data-accordion)
+	div.category.entity-list-item.list-group-item(accordion-group,ng:repeat="entity in filteredEntities | orderBy:name", ng-class="{active: $parent.selection.indexOf($parent.filteredEntities[$index]) > -1 || $parent.parentSelection == $parent.filteredEntities[$index]}")
+		div(accordion-heading, ng-click="makeSelection(entity)", href="#/category/{{entity.category_id}}")
+			{{entity.name}}
+		|heerler {{entity.name}}

@@ -1,0 +1,8 @@
+.categoryNav(data-accordion, close-others="false")
+	div.category(accordion-group,ng-repeat="entity in filteredEntities | orderBy:name", is-open="entity == currentCategory || entity.subcategories.indexOf(currentCategory) > -1", ng-class="{active: entity == currentCategory}")
+		div(accordion-heading)
+			a(ng-click="makeSelection(entity)", href="{{buildUrl(entity)}}", ng-class="{active: entity == currentCategory}"){{entity.name}}
+		ul.nav.nav-pills.nav-stacked
+			li(ng-repeat="subcat in entity.subcategories", ng-class="{active: subcat == currentCategory}")
+				a(ng-click="makeSelection(subcat)", href="{{buildUrl(subcat)}}")
+					{{subcat.name}}

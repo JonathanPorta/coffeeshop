@@ -95,6 +95,7 @@ angular.module('coffeeshop').service "storage", (uploader, $location, $q, $rootS
 					getting.reject err
 				getting.promise
 			storage.save = (entities = [])->
+				saving = $q.defer()
 				t = new window.JEFRi.Transaction()
 				if entities.length
 					t.add entity for entity in entities
@@ -102,7 +103,17 @@ angular.module('coffeeshop').service "storage", (uploader, $location, $q, $rootS
 					t.add product for product in products
 					t.add category for category in categories
 				s = new window.JEFRi.Stores.PostStore({remote: base, runtime})
-				s.execute 'persist', t
+				s.execute('persist', t)
+				.then (trans)->
+					if trans.entities.length
+						runtime.expand trans.entities
+						saving.resolve trans.entities
+					else
+						saving.resolve []
+				.catch (err)->
+					console.log "Failed to save: " , params, err
+					saving.reject err
+				saving.promise
 			storage.build = (type, initial = {})->
 				runtime.build(type, initial)
 			storage.getRelatedProducts = (prod)->
@@ -194,6 +205,29 @@ angular.module('coffeeshop').service "storage", (uploader, $location, $q, $rootS
 					console.log "error getting related", err
 
 				prod.promise
+
+			storage.getParentCategories= ()->
+				cats = $q.defer()
+
+				t = new window.JEFRi.Transaction()
+				t.add {_type:"Category", "parent_id":"", "subcategories":{}}
+				s.execute('get', t)
+				.then (results)->
+					cs = runtime.find {_type: "Category", "parent_id":""}
+					##Because runtime.find sucks....
+					parents = []
+					for c in cs
+						if c.parent_id == ""
+							parents.push c
+
+					result = {
+						categories: parents
+					}
+					cats.resolve result
+				.catch (err)->
+					console.log "error getting related", err
+
+				cats.promise
 
 			storage.getAllProducts = ()->
 				prods = $q.defer()

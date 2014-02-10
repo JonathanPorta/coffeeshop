@@ -1,0 +1,5 @@
+.modal-header
+	button.close(ng-click="close()", type="button", aria-hidden="true")&times;
+	h4.modal-title Categories Modal!
+.modal-body
+	div(entity-list, entities="categories", on-selection-change='onCategorySelected(selection)', listview-template="categories/listview", params='{}')

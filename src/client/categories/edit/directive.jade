@@ -1,0 +1,17 @@
+.categoryEditDirective
+	.panel.panel-default
+		.panel-heading(ng-show="config.title")
+			h4.panel-title {{config.title}}
+		.panel-body
+			form(role="form")
+				.form-group
+					label.sr-only(for="categories-edit-name")
+					input.form-control(id="categories-edit-name", ng-model="category.name", placeholder="Enter Category Name")
+				.alert.alert-warning If you want this to be a main category, don't select a parent.
+					.form-group
+						label.sr-only(for="categories-edit-parent")
+						select.form-control(id="categories-edit-parent_id", ng-model="category.parent_id")
+							option(value="") --Select Parent Category--
+							option(value="{{parent.category_id}}", ng-repeat="parent in parentCategories | dontParentSelf:category.category_id") {{parent.name}}
+				.form-group
+					button(ng-click="onSave()") Save
