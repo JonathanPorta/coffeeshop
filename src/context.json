@@ -137,6 +137,10 @@
 			"category_id": {
 				"type": "string"
 			},
+			"parent_id": {
+				"type": "string",
+				"attributes": {
+					"nullable": "true"}},
 			"name": {
 				"type": "string"
 			}
@@ -150,6 +154,24 @@
 					"property": "category_id"
 				},
 				"back": "category"
+			},
+			"parent": {
+				"type": "has_a",
+				"property": "parent_id",
+				"to": {
+					"type": "Category",
+					"property": "category_id"
+				},
+				"back": "subcategories"
+			},
+			"subcategories": {
+				"type": "has_many",
+				"property": "category_id",
+				"to": {
+					"type": "Category",
+					"property": "parent_id"
+				},
+				"back": "parent"
 			}
 		}
 	}
