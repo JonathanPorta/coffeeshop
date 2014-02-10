@@ -1,4 +1,8 @@
-angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
+angular.module('coffeeshop').controller "admin", ($scope, storage, $modal, $route, $routeParams)->
+
+	console.log "Route:", $route
+	$scope.admin = $routeParams.admin
+
 	$scope.categories = []
 	$scope.products   = []
 
@@ -12,11 +16,38 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 	$scope.relatedCategories  = []
 	$scope.relatedPictures    = []
 
+	$scope.parentCategories = []
+
 	watchExp = (entity)->
 		lastModified = 0
 		entity.on 'modified', ->
 			lastModified = new Date / 1e3
 		-> lastModified
+
+	$scope.onCreateNewRelatedCategory = ()->
+
+		console.log("ADMIN CONTROLLER -> onCreateNewRelatedCategory()")
+
+		cb = (cat)->
+			$scope.onNewRelatedCategory(cat)
+
+		cats = $scope.categories
+		newRelatedCategoryDialogCtrl = ($scope, $modalInstance)->
+			console.log "newRelatedCategoryDialog->This is the controller of the modal! yay!"
+			$scope.categories = cats
+			$scope.onCategorySelected = (selection)->
+				cb(selection)
+				$scope.close()
+			$scope.close = (e)->
+				$modalInstance.close(e)
+
+		newRelatedCategoryDialog = $modal.open({
+			templateUrl: "categories/list/modal"
+			backdrop: true
+			keyboard: true
+			controller: newRelatedCategoryDialogCtrl
+		})
+		console.log newRelatedCategoryDialog
 
 	$scope.onCreateNewRelatedProduct = ()->
 #		if $scope.selectedRelatedProduct
@@ -101,7 +132,10 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 	$scope.newProduct = ->
 		$scope.selectedProduct = storage.build "Product", {}
 
-	$scope.onSelectCategory = (cat)->
+	$scope.newCategory = ->
+		$scope.selectedCategory = storage.build "Category", {}
+
+	$scope.onSelectRelatedCategory = (cat)->
 
 	$scope.onSelectMainProduct = (prod)->
 		console.log "Admin Controller - Main Product Selected", prod
@@ -111,6 +145,10 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 		$scope.relatedCategories = []
 		$scope.relatedCategories.push prod.category
 		$scope.onRelatedProductsChange()
+
+	$scope.onSelectMainCategory = (cat)->
+		console.log "Admin Controller - Main Category Selected", cat
+		$scope.selectedCategory = cat
 
 	$scope.onSelectAttachment = (att)->
 		console.log "Admin Controller - Attachment Selected", att
@@ -145,6 +183,14 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 			save $scope.selectedProduct
 		$scope.onRelatedProductsChange()
 
+	$scope.onNewRelatedCategory = (cat)->
+		console.log "Admin Controller - New Category Selected", cat
+		$scope.selectedProduct.category= cat
+		$scope.selectedRelatedCategory = cat
+		$scope.onRelatedCategoriesChange [$scope.selectedProduct.category]
+		save cat
+		save $scope.selectedProduct
+
 	$scope.onRelatedProductsChange = ()->
 		console.log "Admin Controller - Related Products Changed!"
 		storage.getRelatedProducts($scope.selectedProduct)
@@ -161,7 +207,7 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 
 	$scope.onRelatedCategoriesChange = (cats)->
 		console.log "Admin Controller - Related Categories Changed!", cats
-		$scope.relatedCategories = prods
+		$scope.relatedCategories = cats
 
 	$scope.addPicture = (pic)->
 		console.log "Adding a new pic to the pile and current product: ", pic
@@ -170,17 +216,32 @@ angular.module('coffeeshop').controller "admin", ($scope, storage, $modal)->
 		save $scope.selectedProduct
 		save pic
 
+	$scope.categorySave = ()->
+		save $scope.selectedCategory
+		$scope.selectedCategory = null
+
 	save = (entity) ->
 		#need to make saving smarter so we don't have tons of persists.
 		entities = [entity]
 		storage.save(entities)
 
+	saveCurrent = () ->
+		#need to make saving smarter so we don't have tons of persists.
+		entities = [selectedProduct]
+		storage.save(entities)
+
 	storage.ready.then (data)->
 		console.log "Admin Controller - Storage Ready", data
-		storage.getAllProducts()
-			.then (data)->
-				$scope.products = data.products
-				$scope.categories = data.categories
+		if $scope.admin is "products"
+			storage.getAllProducts()
+				.then (data)->
+					$scope.products = data.products
+					$scope.categories = data.categories
+		else if $scope.admin is "categories"
+			storage.getParentCategories()
+				.then (data)->
+					$scope.categories = data.categories
+					$scope.parentCategories = data.categories
 #		$scope.onRelatedAttachmentsChange data.attachments
 #		$scope.relatedPictures = data.pictures
 		#$scope.$watch watchExp(list), save, true

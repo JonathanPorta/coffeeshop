@@ -1,16 +1,29 @@
+header
+	.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+		.navbar-header
+			a.navbar-brand Admin
+		.collapse.navbar-collapse(role="navigation")
+			ul.nav.navbar-nav
+				li
+					a(href="#/admin/products") Products
+				li
+					a(href="#/admin/categories") Categories
+
 .admin.container
-	.row
-		.col-md-4(entity-list, entities="products", on-selection-change='onSelectMainProduct(selection)', listview-template="products/listview", params='{"searchOn": "name", "defaultFilter":{"value":"active","key":"status"}, "filters": [ {"label":"Active","value":"active","key":"status"}, {"label":"Pending","value":"pending","key":"status"}, {"label":"Hidden","value":"hidden","key":"status"}, {"label":"All","value":"","key":"status"} ]}')
+	.row(ng-show="admin == 'products'")
+		.col-md-4(entity-list, entities="products", on-selection-change='onSelectMainProduct(selection)', listview-template="products/listview", params='{"allowNav":false, "searchOn": "name", "defaultFilter":{"value":"active","key":"status"}, "filters": [ {"label":"Active","value":"active","key":"status"}, {"label":"Pending","value":"pending","key":"status"}, {"label":"Hidden","value":"hidden","key":"status"}, {"label":"All","value":"","key":"status"} ]}')
 		.col-md-8
 			.container(ng-show="selectedProduct")
 				.row
 					.col-md-12(ng-show="selectedProduct.name")
 						h2.admin-product-edit-header Editing a product
+							button.btn.btn-lg.btn-primary(ng-click="saveCurrent()") Save
 					.col-md-12(ng-hide="selectedProduct.name")
 						h2.admin-product-edit-header New product
+							button.btn.btn-lg.btn-primary(ng-click="saveCurrent()") Save
 				.row
 					.col-md-6(product-edit, product="selectedProduct", params='{"title":"The basics"}')
-					.col-md-3(entity-list, entities='relatedCategories', on-selection-change='onSelectCategory(selection)', listview-template="categories/listview", params='{"image":"false","title":"Categories"}')
+					.col-md-3(entity-list, entities='relatedCategories', on-selection-change='onSelectRelatedCategory(selection)', on-create-new='onCreateNewRelatedCategory()', listview-template="categories/listview", params='{"newButton":"Add","image":"false","title":"Categories"}')
 					.col-md-3(entity-list, entities='relatedProducts', on-selection-change='', on-create-new='onCreateNewRelatedProduct()', listview-template="products/listview", params='{"newButton":"Add","editButton":"Edit","image":"false","title":"Related products","compact":"true"}')
 				.row
 					//-.col-md-6(picture-gallery, pictures='relatedPictures', on-create-new='onCreateNewPicture()', params='{"compact":"true","title":"Product pictures"}')
@@ -24,3 +37,27 @@
 							h3 No product is currently selected for editing.
 							h3 Please select the product you would like to edit, or
 							button.btn.btn-lg.btn-primary(ng-click="newProduct()") Create a new product
+	.row(ng-show="admin == 'categories'")
+		.col-md-3(category-nav, entities="categories", current-category="selectedCategory", on-selection-change='onSelectMainCategory(selection)', params='{"allowNav":false}')
+		.col-md-9
+			.container(ng-show="selectedCategory")
+				.row
+					.col-md-12(ng-show="selectedCategory.name")
+						h2.admin-product-edit-header Editing a category
+					.col-md-12(ng-hide="selectedCategory.name")
+						h2.admin-product-edit-header New category
+				.row
+					.col-md-12(category-edit, category="selectedCategory", parent-categories="parentCategories", save="categorySave()", params='{"title":"The basics"}')
+			.container(ng-hide="selectedCategory")
+				.row
+					.col-md-12
+						center
+							h2 :(
+							h3 No category is currently selected for editing.
+							h3 Please select the category you would like to edit, or
+							button.btn.btn-lg.btn-primary(ng-click="newCategory()") Create a new category
+
+footer
+	.container
+		:markdown
+			coffeeshop by [Jonathan Porta](http://jonathanporta.com)
