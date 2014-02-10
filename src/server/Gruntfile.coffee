@@ -7,7 +7,8 @@ module.exports = (grunt) ->
 			selenium:
 				command: [
 					"java -jar ./selenium/selenium-server-standalone-2.35.0.jar"
-					"-Dwebdriver.chrome.driver=./selenium/chromedriver"
+					"-Dwebdriver.chrome.driver=./selenium/phantomJS"
+#					"-Dwebdriver.chrome.driver=./selenium/chromedriver"
 					">/dev/null"
 				].join ' '
 				options:
@@ -20,17 +21,17 @@ module.exports = (grunt) ->
 			install:
 				command: "[ -f ./selenium/selenium-server-standalone-2.35.0.jar ] || ./node_modules/protractor/bin/install_selenium_standalone"
 
-		cucumberjs:
-			all:
-				files:
-					src: ['src/features/behavior/users/*']
-			current:
-				files:
-					src: ['src/features/behavior/users/*']
-				options:
-					tags: '@current'
-			options:
-				steps: 'src/features/behavior/steps'
+#		cucumberjs:
+#			all:
+#				files:
+#					src: ['src/features/behavior/users/*']
+#			current:
+#				files:
+#					src: ['src/features/behavior/users/*']
+#				options:
+#					tags: '@current'
+#			options:
+#				steps: 'src/features/behavior/steps'
 
 		jsonlint:
 			context:
@@ -39,7 +40,7 @@ module.exports = (grunt) ->
 				src: ['build/test.json']
 
 	grunt.NpmTasks = [
-		'grunt-cucumber'
+		#'grunt-cucumber'
 		'grunt-shell-spawn'
 		'grunt-jsonlint'
 	]
@@ -51,18 +52,18 @@ module.exports = (grunt) ->
 
 	grunt.registerTask "features", [
 		#"shell:kill"
-		"shell:selenium"
+#		"shell:selenium"
 		"shell:sleep"
-		"cucumberjs:all"
-		"shell:selenium:kill"
+		#"cucumberjs:all"
+#		"shell:selenium:kill"
 		#"shell:kill"
 	]
 
 	grunt.registerTask "feature", [
 		#"shell:kill"
-		"shell:selenium"
+#		"shell:selenium"
 		"shell:sleep"
-		"cucumberjs:current"
-		"shell:selenium:kill"
+		#"cucumberjs:current"
+#		"shell:selenium:kill"
 		#"shell:kill"
 	]

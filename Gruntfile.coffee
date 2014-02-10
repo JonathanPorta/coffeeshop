@@ -44,7 +44,7 @@ module.exports = (grunt) ->
 	grunt.registerTask 'test', [
 		'lint'
 		'mochaTest:server'
-		'karma:unit'
+#		'karma:unit'
 		'features'
 	]
 
@@ -52,8 +52,8 @@ module.exports = (grunt) ->
 		'jsonlint:context'
 		'copy:context'
 		'build'
-		'mochaTest:server'
-		'karma:unit'
+#		'mochaTest:server'
+#		'karma:unit'
 	]
 
 	grunt.registerTask 'compress', [

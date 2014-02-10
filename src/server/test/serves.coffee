@@ -42,20 +42,19 @@ describe "Server", ->
 				///,
 				"page needs a title"
 
-		it "returns a page with a header", (done) ->
+		it "returns a page with ng:app", (done) ->
 			index done, (e, r, body) ->
-				body.should.match /<header>/
-				body.should.match /<\/header>/
+				body.should.match ///
+					ng:app="coffeeshop"
+				///,
+				"AngularJS app is not defined on main page."
 
-		it "returns a page with input fields", (done) ->
+		it "returns an ng-view", (done) ->
 			index done, (e, r, body) ->
-				body.should.match /<input[^>]*>/
-
-		it "sets the placeholder on the input", (done) ->
-			index done, (e, r, body) ->
-				matches = body.match /<input[^>]+placeholder="([^"]+)"/
-				should.exist matches
-				matches[1].should.match /to-do/
+				body.should.match ///
+					ng-view
+				///,
+				"No ng:view is defind on page."
 
 		it "sets a viewport", (done)->
 			index done, (e, r, body)->

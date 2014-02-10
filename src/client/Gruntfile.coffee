@@ -59,29 +59,29 @@ module.exports = (grunt)->
 				files:
 					"build/page.css":["src/client/page.less"]
 
-		karma:
-			unit:
-				options:
-					browsers: ["Chrome"]
-					# browsers: ["PhantomJS"]
-					frameworks: ["jasmine"]
-					preprocessors:
-						"src/client/bundle.js": "coverage"
-						"src/**/*.coffee": "coffee"
-						"src/**/**/*.coffee": "coffee"
-						"src/**/**/**/*.coffee": "coffee"
-					reporters: [
-						'coverage'
-						'dots'
-					]
-					singleRun: true
-					files: [
-						"bower_components/angular/angular.js"
-						"bower_components/angular-mocks/angular-mocks.js"
-						"src/client/bundle.js"
-						"src/client/**/unit.coffee"
-						"src/client/**/**/unit.coffee"
-					]
+#		karma:
+#			unit:
+#				options:
+#					browsers: ["Chrome"]
+#					# browsers: ["PhantomJS"]
+#					frameworks: ["jasmine"]
+#					preprocessors:
+#						"src/client/bundle.js": "coverage"
+#						"src/**/*.coffee": "coffee"
+#						"src/**/**/*.coffee": "coffee"
+#						"src/**/**/**/*.coffee": "coffee"
+#					reporters: [
+#						'coverage'
+#						'dots'
+#					]
+#					singleRun: true
+#					files: [
+#						"bower_components/angular/angular.js"
+#						"bower_components/angular-mocks/angular-mocks.js"
+#						"src/client/bundle.js"
+#						"src/client/**/unit.coffee"
+#						"src/client/**/**/unit.coffee"
+#					]
 
 		uglify:
 			all:
@@ -107,7 +107,7 @@ module.exports = (grunt)->
 		'grunt-browserify'
 		'grunt-contrib-jade'
 		'grunt-contrib-less'
-		'grunt-karma'
+#		'grunt-karma'
 		'grunt-contrib-uglify'
 		'grunt-contrib-cssmin'
 		'grunt-contrib-watch'
