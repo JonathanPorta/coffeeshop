@@ -3,7 +3,8 @@ coffeeshop = angular.module "coffeeshop", ["ngRoute","ui.bootstrap"]
 coffeeshop.config ($routeProvider)->
 #		$routeProvider.when('/', {templateUrl:'store', controller:"store"})
 		$routeProvider.when('/', {action:"homepage"})
-		$routeProvider.when('/admin', {templateUrl:'admin', controller:"admin"})
+		$routeProvider.when('/admin/:admin', {templateUrl:'admin', controller:"admin"})
+		$routeProvider.when('/admin', {redirectTo: '/admin/products'})
 		$routeProvider.when('/modal', {templateUrl:'modal', controller:"admin"})
 		$routeProvider.when('/entity/list', {templateUrl:'entity/list', controller:"admin"})
 		$routeProvider.when('/pretty', {templateUrl:'pretty', controller:"admin"})
@@ -46,6 +47,10 @@ require "./products/detail/directive.coffee"
 
 require "./products/edit/directive.coffee"
 
+require "./categories/edit/directive.coffee"
+
+require "./categories/accordion/directive.coffee"
+
 require "./products/cart/directive.coffee"
 require "./products/stock/directive.coffee"
 
@@ -67,3 +72,5 @@ require "./pictures/gallery/controller.coffee"
 require "./pictures/gallery/directive.coffee"
 
 require "./filters/product.coffee"
+require "./filters/category.coffee"
+require "./filters/attachment.coffee"

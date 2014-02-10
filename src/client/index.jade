@@ -8,7 +8,7 @@ html
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js')
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-animate.js')
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.js')
-		script(src='/bower/angular-bootstrap/ui-bootstrap-custom-tpls-0.7.0.js')
+		script(src='/bower/angular-bootstrap/ui-bootstrap-tpls-0.9.0.js')
 		script(src='http://underscorejs.org/underscore-min.js')
 		script(src='/vendor/superscore/lib/superscore.min.js')
 		script(src='/bower/q/q.js')
@@ -17,21 +17,4 @@ html
 		script(src='/vendor/store/lib/jefri-stores.min.js')
 		script(src='bundle.js')
 		script(src='templates.js')
-	body(ng:app='coffeeshop', ng:controller='main')
-		header
-			.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
-				.navbar-header
-					a.navbar-brand Home
-				.collapse.navbar-collapse(role="navigation")
-					ul.nav.navbar-nav
-						li
-							a(href="#/") All Products
-					ul.nav.navbar-nav.navbar-right
-						li
-							a(href="http://www.cart32hostingred.com/cgi-bin/cart32.exe/CentralHobbies-AddItem", target="_blank") My Cart
-		.container(ng-view)
-		footer
-			.container
-				:markdown
-					coffeeshop by [Jonathan Porta](http://jonathanporta.com)
-
+	body(ng:app='coffeeshop',ng-view)
