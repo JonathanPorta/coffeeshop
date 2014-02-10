@@ -13,6 +13,7 @@ JEFRi = require "jefri"
 Stores = require "jefri-stores"
 
 importer = require './importer'
+connector = require './connector'
 uploader = require './uploader'
 
 runtime = new JEFRi.Runtime ""
@@ -21,6 +22,8 @@ store = new Stores.Stores.FileStore runtime: runtime
 express = require "express"
 app =
 	express()
+		.use(express.json({limit: '50mb'}))
+
 		.use(express.bodyParser())
 
 		.get '/context.json', (req, res)->
@@ -79,8 +82,13 @@ app =
 			res.set "content-type", "text/javascript"
 			res.sendfile path.join root, "build", "test.json"
 
+		.post '/import', (req, res) ->
+			importer.import req
+			res.end "Elo."
+
 		.get '/import', (req, res) ->
-			importer.import "http://localhost:3000/test.json"
+			importer.import req
+			res.end "Elo."
 
 		.get '/uploads/:size/:file', (req, res) ->
 			res.set "content-type", "image/jpeg"
