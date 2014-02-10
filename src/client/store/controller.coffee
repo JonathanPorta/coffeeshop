@@ -1,6 +1,7 @@
-angular.module('coffeeshop').controller "store", ($scope, storage, $routeParams)->
+angular.module('coffeeshop').controller "store", ($scope, storage, $routeParams, $filter)->
 
 	console.log "ROUTEPARAMS: ", $routeParams
+	$scope.galleryview = false
 
 	state = {
 		product_id  : ""
@@ -21,11 +22,21 @@ angular.module('coffeeshop').controller "store", ($scope, storage, $routeParams)
 	$scope.productPictures = []
 	$scope.productAttachments = []
 
+	$scope.attributes = []
+	$scope.externals = []
+	$scope.parentCategories = []
+
 	watchExp = (entity)->
 		lastModified = 0
 		entity.on 'modified', ->
 			lastModified = new Date / 1e3
 		-> lastModified
+
+	$scope.getAttributes = ()->
+		$scope.attributes = $filter("attr") $scope.productAttachments, ["attribute"]
+
+	$scope.getExternals = ()->
+		$scope.externals = $filter("attr") $scope.productAttachments, ["link","download","video"]
 
 	$scope.reset = ()->
 		$scope.selectedProduct = ""
@@ -40,6 +51,7 @@ angular.module('coffeeshop').controller "store", ($scope, storage, $routeParams)
 
 	$scope.onSelectProduct = (prod)->
 		$scope.selectedProduct = prod
+		$scope.selectedCategory = prod.category
 		$scope.onRelatedProductsChange()
 		$scope.onProductPicturesChange()
 		$scope.onAttachmentsChange()
@@ -59,6 +71,8 @@ angular.module('coffeeshop').controller "store", ($scope, storage, $routeParams)
 		.then (atts)->
 			console.log "Store Controller - Got Attachments!", atts
 			$scope.productAttachments = atts
+			$scope.getAttributes()
+			$scope.getExternals()
 		.catch (err)->
 			console.log "Error getting those related products", err
 
@@ -78,13 +92,17 @@ angular.module('coffeeshop').controller "store", ($scope, storage, $routeParams)
 		if state.product_id
 			storage.getProduct(state.product_id)
 			.then (data)->
-				$scope.categories = data.all_categories
+#				$scope.categories = data.all_categories
 				$scope.onSelectProduct data.product
 		else if state.category_id
 			storage.getProductsByCategory(state.category_id)
 			.then (data)->
-				$scope.categories = data.all_categories
+#				$scope.categories = data.all_categories
 				$scope.onSelectCategory data.category
+		storage.getParentCategories()
+				.then (data)->
+					$scope.categories = data.categories
+					$scope.parentCategories = data.categories
 
 		console.log "then", d
 #		$scope.products = data.products

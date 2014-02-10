@@ -1,6 +1,42 @@
+header
+	.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+		.navbar-header
+			a.navbar-brand Store
+		.collapse.navbar-collapse(role="navigation")
+			ul.nav.navbar-nav
+				li
+					a(href="#/") All Products
+			ul.nav.navbar-nav.navbar-right
+				li
+					a(href="http://www.cart32hostingred.com/cgi-bin/cart32.exe/CentralHobbies-AddItem", target="_blank") My Cart
 .store.container
 	.row
-		.col-md-3(entity-list, entities='categories', on-selection-change='', parent-selection='selectedCategory', listview-template="categories/listview", params='{"image":false,"title":"Categories","manageSelection":false}')
-		.col-md-9
-			div(entity-list, entities="products", on-selection-change='', ng-hide="selectedProduct", listview-template="products/listview", params='{"defaultFilter":{"value":"active","key":"status"},"manageSelection":false}')
-			div(product-detail, product="selectedProduct", ng-show="selectedProduct")
+		.col-md-2(category-nav, entities="categories", current-category="selectedCategory", on-selection-change='', params='{}')
+		.col-md-10
+			.row.productListHeader(ng-hide="selectedProduct")
+				.col-md-12
+					h2
+						{{selectedCategory.name}}
+						.btn-toolbar.pull-right(role="toolbar")
+							.btn-group
+								button.btn.btn-default(ng-click="galleryview = false", ng-class="{active: !galleryview}")
+									span.glyphicon.glyphicon-align-justify
+								button.btn.btn-default(ng-click="galleryview = true", ng-class="{active: galleryview}")
+									span.glyphicon.glyphicon-th-large
+			.row(ng-show="selectedProduct")
+				.col-md-12
+					ol.breadcrumb
+						li
+							a(href="#") Home
+						li
+							a(href="#/category/{{selectedProduct.category_id}}") {{selectedProduct.category.name}}
+						li {{selectedProduct.name}}
+			.row
+				.col-md-12
+					.productListContainer(entity-list, ng-hide="galleryview || selectedProduct", entities="products", on-selection-change='', listview-template="products/listview", params='{"defaultFilter":{"value":"active","key":"status"},"manageSelection":false}')
+					.productGalleryContainer(entity-list, ng-show="galleryview && !selectedProduct", entities="products", on-selection-change='', listview-template="products/gallery",  params='{"defaultFilter":{"value":"active","key":"status"},"image":"thumbnail","compact":false, "manageSelection":false}')
+					div(product-detail, product="selectedProduct", ng-show="selectedProduct")
+footer
+	.container
+		:markdown
+			coffeeshop by [Jonathan Porta](http://jonathanporta.com)
