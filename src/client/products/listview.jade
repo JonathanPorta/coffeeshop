@@ -1,8 +1,7 @@
 .entity-list-item.list-group-item(ng:repeat="entity in filteredEntities", ng-class="{active: $parent.selection.indexOf($parent.filteredEntities[$index]) > -1}", ng-click="makeSelection(entity)")
-	.pull-right
-		h5.list-group-heading.entity-list-price(ng-hide="!config.price && !config.qty && !config.addToCart")
-			span(ng-show="config.price") $3.95
-			div(entity-cart, entity="entity", ng-show="config.addToCart")
+	.pull-right(ng-hide="!config.price && !config.qty && !config.addToCart")
+		h4(ng-show="config.price") {{entity.price | productPrice}}
+		div(product-cart, product="entity", params='{}', ng-show="config.addToCart")
 	div
 		.pull-left(ng-show="config.image")
 			img.img-thumbnail.entity-list-thumbnail(ng-src="{{getImage(entity)}}")

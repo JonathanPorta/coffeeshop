@@ -7,5 +7,5 @@
 				.caption(ng-hide="config.compact")
 					h4
 						a(href="{{buildUrl('#/product/'+entity.product_id)}}") {{entity.name}}
-					div(product-stock, product='entity')
-					h5 {{entity.price | productPrice}}
+					h4 {{entity.price | productPrice}}
+					div(product-cart, product="entity", params='{}')

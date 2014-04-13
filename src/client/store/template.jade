@@ -33,7 +33,7 @@ header
 						li {{selectedProduct.name}}
 			.row
 				.col-md-12
-					.productListContainer(entity-list, ng-hide="galleryview || selectedProduct", entities="products", on-selection-change='', listview-template="products/listview", params='{"defaultFilter":{"value":"active","key":"status"},"manageSelection":false}')
+					.productListContainer(entity-list, ng-hide="galleryview || selectedProduct", entities="products", on-selection-change='', listview-template="products/listview", params='{"defaultFilter":{"value":"active","key":"status"},"manageSelection":false,"addToCart":true,"price":true}')
 					.productGalleryContainer(entity-list, ng-show="galleryview && !selectedProduct", entities="products", on-selection-change='', listview-template="products/gallery",  params='{"defaultFilter":{"value":"active","key":"status"},"image":"thumbnail","compact":false, "manageSelection":false}')
 					div(product-detail, product="selectedProduct", ng-show="selectedProduct")
 footer
