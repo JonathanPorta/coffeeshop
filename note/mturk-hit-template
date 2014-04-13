@@ -1,0 +1,70 @@
+<h3>Find the corresponding information for this product as it is listed on the given URL.</h3>
+
+<div class="highlight-box">
+<h4>Instructions:</h4>
+<ol>
+	<li>Got to the Product Listing URL below.</li>
+	<li>Find where the product is listed on the page.</li>
+	<li>Enter the details in the form below.</li>
+</ol>
+<h4>Notes:</h4>
+<ul>
+	<li>Every product will have a name and a price.</li>
+	<li>Not every product will have a description.</li>
+	<li>Not every product will have an image.</li>
+	<li>The image URL must be a <strong>direct link to the image file</strong>.</li>
+</ul>
+</div>
+
+<center>
+<p><a href="http://i.imgur.com/3KSaUla.png" target="_blank">Examples of Product Listings</a></p>
+</center>
+
+<table>
+	<tbody>
+		<tr>
+			<td class="label">Product Listing URL:</td>
+			<td class="field"><a href="${url}" target="_blank">${url}</a></td>
+		</tr>
+		<tr>
+			<td class="label">Product Number:</td>
+			<td class="field">${product_number}</td>
+		</tr>
+		<tr>
+			<td class="label">Product Name:</td>
+			<td class="field"><input id="product_name" name="product_name" type="text" /><span class="required"> REQUIRED - DO NOT INCLUDE PRODUCT NUMBER!</span></td>
+		</tr>
+		<tr>
+			<td class="label">Product Image URL:</td>
+			<td class="field"><input id="product_image" name="product_image" type="text" /><span class="notice">**MUST LINK DIRECTLY TO IMAGE FILE.**</span></td>
+		</tr>
+		<tr>
+			<td class="label">Product Description:</td>
+			<td class="field"><textarea id="product_description" name="product_description"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2"><br />
+			<strong>This product is missing something:</strong></td>
+		</tr>
+		<tr>
+			<td class="field" colspan="2"><input id="no_image" name="no_image" type="checkbox" /> Product does not have an image.</td>
+		</tr>
+		<tr>
+			<td class="field" colspan="2"><input id="no_description" name="no_description" type="checkbox" /> Product does not have a description.</td>
+		</tr>
+		<tr>
+			<td class="field" colspan="2"><input id="no_product" name="no_product" type="checkbox" /> Can&#39;t find the product.</td>
+		</tr>
+	</tbody>
+</table>
+<style type="text/css"><!--
+.highlight-box { border:solid 0px #98BE10; background:#FCF9CE; color:#222222; padding:4px; text-align:left; font-size: smaller;}
+.required{font-size:.9em; color: red; font-style: bold;}
+.notice{font-size:.9em; color: red; font-style: bold;}
+td.label{text-align: right;}
+td.field{text-align: left;}
+#product_name, #product_description, #product_image{width: 400px;}
+#product_description{height: 200px;}
+-->
+</style>
+

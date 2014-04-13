@@ -19,6 +19,10 @@ uploader = require './uploader'
 runtime = new JEFRi.Runtime ""
 store = new Stores.Stores.FileStore runtime: runtime
 
+ya = require 'ya-csv'
+
+importedUrls = {}
+
 express = require "express"
 app =
 	express()
@@ -82,13 +86,44 @@ app =
 			res.set "content-type", "text/javascript"
 			res.sendfile path.join root, "build", "test.json"
 
+		.post '/chrome', (req, res) ->
+#		var payload = {
+#			"url" : urls,
+#			"cat" : cat,
+#			"subCat":subCat
+#		};
+
+			result = 
+				"url": ""
+				"count": 0
+				"msg": ""
+
+			writer = ya.createCsvFileWriter path.join(root, 'scrape.csv'), {'flags': 'a'}
+
+			for key,val of req.body.url
+				result.url = key
+				if(importedUrls.hasOwnProperty result.url)
+					result.msg = "URL has already been scraped. " + importedUrls[result.url] + " product(s) are in the DB."
+				else
+					result.count = val.length
+					for id in val
+						#write to flattened CSV file for AWS.
+						writer.writeRecord [key,req.body.cat, req.body.subCat, id]
+					result.msg = "No products added from " + result.url + "!"
+					if(result.count > 0)
+						result.msg = result.count + " products added from " + result.url + " to "+req.body.cat+"->"+req.body.subCat+"!"
+						importedUrls[result.url] = result.count
+
+			console.log result
+			res.jsonp result
+
 		.post '/import', (req, res) ->
 			importer.import req
 			res.end "Elo."
 
 		.get '/import', (req, res) ->
-			importer.import req
-			res.end "Elo."
+			importer.full "/home/portaj/Downloads/import2.csv", runtime, store, root
+			res.end "importing... /home/portaj/Downloads/import.csv"
 
 		.get '/uploads/:size/:file', (req, res) ->
 			res.set "content-type", "image/jpeg"

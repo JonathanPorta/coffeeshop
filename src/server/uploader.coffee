@@ -7,6 +7,7 @@ im = require "imagemagick-native"
 module.exports = do ->
 	save: (targetDirectory, file, entity, cb)->
 		#Define Directories
+		#TODO: Do this in a config file.
 		ext = ".jpg"
 		sizes = {
 			full:
