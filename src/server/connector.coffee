@@ -1,4 +1,4 @@
-db = require 'odbc'
+#db = require 'odbc'
 
 cn = ""
 
