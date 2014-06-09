@@ -43,9 +43,9 @@ module.exports = (grunt) ->
 
 	grunt.registerTask 'test', [
 		'lint'
-		'mochaTest:server'
+#		'mochaTest:server'
 #		'karma:unit'
-		'features'
+#		'features'
 	]
 
 	grunt.registerTask 'base', [

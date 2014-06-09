@@ -17,7 +17,7 @@ module.exports = (grunt) ->
 			sleep:
 				command:
 					"sleep 1"
-					
+
 			install:
 				command: "[ -f ./selenium/selenium-server-standalone-2.35.0.jar ] || ./node_modules/protractor/bin/install_selenium_standalone"
 
@@ -41,7 +41,7 @@ module.exports = (grunt) ->
 
 	grunt.NpmTasks = [
 		#'grunt-cucumber'
-		'grunt-shell-spawn'
+		#'grunt-shell-spawn'
 		'grunt-jsonlint'
 	]
 
