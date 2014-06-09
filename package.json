@@ -5,7 +5,6 @@
   "main": "index.js",
   "devDependencies": {
     "grunt": "~0.4.1",
-    "zombie": "~2.0.0-alpha21",
     "grunt-cucumber": "~0.2.3",
     "should": "~1.2.2",
     "mocha": "~1.12.1",
