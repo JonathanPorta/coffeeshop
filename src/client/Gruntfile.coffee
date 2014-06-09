@@ -46,7 +46,13 @@ module.exports = (grunt)->
 					processName:jadeTemplateId
 				files:[{
 					expand: false
-					src: ["src/client/**/**/template.jade", "src/client/**/**/directive.jade", "src/client/**/**/modal.jade", "src/client/**/listview.jade", "src/client/**/galleryview.jade"]
+					src: [
+						"src/client/**/**/template.jade"
+						"src/client/**/**/directive.jade"
+						"src/client/**/**/modal.jade"
+						"src/client/**/listview.jade"
+						"src/client/**/galleryview.jade"
+					]
 					dest: "build/templates.js"
 				}]
 

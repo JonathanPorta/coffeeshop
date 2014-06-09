@@ -27,12 +27,12 @@ module.exports = (grunt) ->
 				tasks: ['base']
 			all:
 				files:[
-					'src/features/**/*coffee'
-					'src/features/**/*feature'
-					'src/server/**/*coffee'
 					'src/client/**/**/*jade'
 					'src/client/**/**/*coffee'
 					'src/client/**/**/*less'
+					'src/server/**/*coffee'
+					'src/features/**/*coffee'
+					'src/features/**/*feature'
 				]
 				tasks:['default']
 
@@ -51,7 +51,7 @@ module.exports = (grunt) ->
 	grunt.registerTask 'base', [
 		'jsonlint:context'
 		'copy:context'
-		'build'
+#		'build'
 #		'mochaTest:server'
 #		'karma:unit'
 	]
@@ -62,6 +62,7 @@ module.exports = (grunt) ->
 	]
 
 	grunt.registerTask 'default', [
+		'base'
 		'build'
 		'test'
 		'compress'
