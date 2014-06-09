@@ -73,6 +73,6 @@ module.exports = do ->
 #    .then(success, failure)
 
 
-gm "convert" "label:Offline" "PNG:-"
+# gm "convert" "label:Offline" "PNG:-"
 
-$ convert rose.jpg -resize 50% rose.png
+# $ convert rose.jpg -resize 50% rose.png
