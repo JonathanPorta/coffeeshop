@@ -4,4 +4,4 @@ build
 vendor
 .jefri/
 .uploads/
-!./node
+!./node/*/node_modules
