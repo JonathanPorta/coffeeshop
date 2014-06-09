@@ -1,7 +1,6 @@
-node_modules
-bower_components
-build
-vendor
-.jefri/
-.uploads/
-!./node/*/node_modules
+/node_modules
+/bower_components
+/build
+/vendor
+/.jefri/
+/.uploads/
