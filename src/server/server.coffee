@@ -7,7 +7,7 @@ nconf.argv()
 	.file
 		file: path.join root, 'server.json'
 	.defaults
-		port: 3000
+		port: process.argv[2] || 3000
 
 JEFRi = require "jefri"
 Stores = require "jefri-stores"
