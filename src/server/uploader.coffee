@@ -2,7 +2,8 @@ http = require 'http'
 fs = require 'fs'
 Q = require 'q'
 path = require "path"
-im = require "imagemagick-native"
+# im = require "imagemagick-native"
+gm = require "gm"
 
 module.exports = do ->
 	save: (targetDirectory, file, entity, cb)->
@@ -34,21 +35,21 @@ module.exports = do ->
 
 		console.log "going to save uploaded file(s)", file.path
 
-		original = fs.readFileSync file.path
-		console.log "First read, now to resize:", entity
+		# original = fs.readFileSync file.path
+		# console.log "First read, now to resize:", entity
 
-		for size,specs of sizes
-			console.log "Resizing: " + size
-			resized = im.convert({
-				srcData: original
-				width: specs.width
-				height: specs.height
-				resizeStyle: "aspectfill"
-				quality: 75
-				format: 'JPEG'
-			})
-			entity[size] = specs['url']
-			fs.writeFileSync specs.path, resized, 'binary'
+		# for size,specs of sizes
+		# 	console.log "Resizing: " + size
+		# 	resized = im.convert({
+		# 		srcData: original
+		# 		width: specs.width
+		# 		height: specs.height
+		# 		resizeStyle: "aspectfill"
+		# 		quality: 75
+		# 		format: 'JPEG'
+		# 	})
+		# 	entity[size] = specs['url']
+		# 	fs.writeFileSync specs.path, resized, 'binary'
 
 		cb(entity)
 
@@ -70,3 +71,8 @@ module.exports = do ->
 #        console.error 'It failed :('
 #    promisor()
 #    .then(success, failure)
+
+
+gm "convert" "label:Offline" "PNG:-"
+
+$ convert rose.jpg -resize 50% rose.png

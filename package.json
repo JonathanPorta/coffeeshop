@@ -45,8 +45,8 @@
     "coffee-script": "~1.6.3",
     "csv": "^0.3.7",
     "express": "~3.4.0",
+    "gm": "^1.16.0",
     "grunt-ngjade": "0.0.0",
-    "imagemagick-native": "~0.2.9",
     "markdown-js": "0.0.3",
     "ya-csv": "^0.9.3"
   },
