@@ -57,15 +57,26 @@ app =
 			)
 
 		.get '/bower/:module/:file', (req, res) ->
+			lib = "lib"
+			noLib = ["angular-bootstrap", "q"]
+			if req.params.module in noLib
+				lib = ""
+			target = path.join root, "bower_components", req.params.module, lib, req.params.file
+			console.log "GET: '/bower/#{ req.params.module }/#{ req.params.file }' ---> #{ target }"
 			res.set "content-type", "text/javascript"
-			res.sendfile path.join root, "bower_components", req.params.module, req.params.file
+			res.sendfile target
 
-		.get '/bower/bootstrap.js', (req, res) ->
-			res.set "content-type", "text/javascript"
-			res.sendfile path.join root, "bower_components", "bootstrap", "dist", "js", "bootstrap.js"
+		# .get '/bower/:module/:file', (req, res) ->
+		# 	console.log "GET: '/bower/#{ req.params.module }/lib/#{ req.params.file }'"
+		# 	res.set "content-type", "text/javascript"
+		# 	res.sendfile path.join root, "bower_components", req.params.module, "lib", req.params.file
 
-		.get /^\/vendor/, (req, res)->
-			res.sendfile path.join root, req.path
+		# .get '/bower/bootstrap.js', (req, res) ->
+		# 	res.set "content-type", "text/javascript"
+		# 	res.sendfile path.join root, "bower_components", "bootstrap", "dist", "js", "bootstrap.js"
+
+		# .get /^\/vendor/, (req, res)->
+		# 	res.sendfile path.join root, req.path
 
 		.get '/page.css', (req, res)->
 			res.set "content-type", "text/css"
@@ -93,7 +104,7 @@ app =
 #			"subCat":subCat
 #		};
 
-			result = 
+			result =
 				"url": ""
 				"count": 0
 				"msg": ""
