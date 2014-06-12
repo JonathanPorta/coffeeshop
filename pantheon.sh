@@ -20,7 +20,7 @@ mkdir -p $FILES_PATH/node_modules
 mkdir -p $FILES_PATH/bower_components
 mkdir -p $FILES_PATH/build
 mkdir -p $FILES_PATH/.jefri
-mkdir -p $FILES_PATH/.upload
+mkdir -p $FILES_PATH/.uploads
 
 npm cache clean >> $INSTALL_LOG 2>&1
 npm install --no-bin-links >> $INSTALL_LOG 2>&1
