@@ -10,8 +10,8 @@
     "angular-mocks": "~1.0.8",
     "angular": "~1.0.8",
     "superscore": "~0.3.4",
-    "jefri-runtime": "git@github.com:jefri/runtime.git#8ea9ccec665569229c2fb7e396bddeb39a6212e6",
-    "jefri-stores": "git@github.com:jefri/stores.git#1f7a73899b7c912a30cb2e9d51286cf386675ab1",
+    "jefri-runtime": "git://github.com/jefri/runtime.git#8ea9ccec665569229c2fb7e396bddeb39a6212e6",
+    "jefri-stores": "git://github.com/jefri/stores.git#1f7a73899b7c912a30cb2e9d51286cf386675ab1",
     "angular-bootstrap": "~0.11.0",
     "bootstrap": "~3.1.1",
     "q": "1.0.1"

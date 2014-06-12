@@ -16,8 +16,18 @@ echo "NODE_LOG=$NODE_LOG" >> $INSTALL_LOG 2>&1
 echo "FILES_PATH=$FILES_PATH" >> $INSTALL_LOG 2>&1
 echo "PATH=$PATH" >> $INSTALL_LOG 2>&1
 
-npm install >> $INSTALL_LOG 2>&1
+mkdir -p $FILES_PATH/node_modules
+mkdir -p $FILES_PATH/bower_components
+mkdir -p $FILES_PATH/build
+mkdir -p $FILES_PATH/.jefri
+mkdir -p $FILES_PATH/.upload
+
+npm cache clean >> $INSTALL_LOG 2>&1
+npm install --no-bin-links >> $INSTALL_LOG 2>&1
+
+bower cache clean
 bower install >> $INSTALL_LOG 2>&1
+
 grunt >> $INSTALL_LOG 2>&1
 
 node ./src/server/start.js $APPSERVER_PORT $PUBLIC_IP >> $NODE_LOG 2>&1
